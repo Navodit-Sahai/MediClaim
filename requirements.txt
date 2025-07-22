@@ -5,3 +5,4 @@ langgraph
 streamlit
 faiss-cpu
 uvicorn
+cloudinary

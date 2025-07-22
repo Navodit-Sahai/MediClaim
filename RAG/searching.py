@@ -3,10 +3,9 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from RAG.database import embeddings
 from FlagEmbedding import FlagReranker
+from database import load_from_cloudinary
 from dotenv import load_dotenv
 import os
-
-
 
 load_dotenv()
 os.environ["HF_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
@@ -15,19 +14,24 @@ reranker = FlagReranker('BAAI/bge-reranker-base', use_fp16=True,
                         trust_remote_code=True,
                         use_auth_token=os.environ["HF_TOKEN"])
 
-def load_vectorstore(save_path: str = "faiss_index"):
+def load_vectorstore(save_path: str = "faiss_index", from_cloudinary: bool = False):
     try:  
-        db = FAISS.load_local(save_path, embeddings, allow_dangerous_deserialization=True)
+        if from_cloudinary:
+            # Cloudinary se load karo
+            db = load_from_cloudinary(save_path)
+        else:
+            # Original local loading
+            db = FAISS.load_local(save_path, embeddings, allow_dangerous_deserialization=True)
+        
         logger.debug(f"Vectorstore loaded from '{save_path}' successfully!")
         return db
     except Exception as e:
         logger.error(f"Failed to load Vectorstore: {e}")
         return None
 
-
-def semantic_search(query: str, top_k: int = 4, fetch_k: int = 8):
+def semantic_search(query: str, top_k: int = 4, fetch_k: int = 8, use_cloudinary: bool = False):
     try:
-        vectorstore = load_vectorstore()
+        vectorstore = load_vectorstore(from_cloudinary=use_cloudinary)
         if not vectorstore:
             return "Vectorstore not available.", []
 
