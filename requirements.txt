@@ -6,3 +6,4 @@ streamlit
 faiss-cpu
 uvicorn
 cloudinary
+sentence-transformers
