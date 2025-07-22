@@ -1,0 +1,7 @@
+fastapi
+langchain-groq
+langchain_community
+langgraph
+streamlit
+faiss-cpu
+uvicorn
