@@ -571,3 +571,20 @@
 2025-07-22 19:05:05,594 - DEBUG - Vectorstore loaded from 'faiss_index' successfully!
 2025-07-22 19:05:10,689 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY. !!
 2025-07-22 19:05:12,122 - DEBUG - REFLECTOR ANSWER GENERATED SUCCESSFULLY.!!
+2025-07-23 00:56:45,929 - DEBUG - Parsed question object: name=None age=None procedure='Air ambulance' duration=None
+2025-07-23 00:56:45,941 - DEBUG - question created successfully!!
+2025-07-23 00:56:45,942 - ERROR - Error loading file C:\Users\sahai\OneDrive\Desktop\hackathon\test\DOC3.pdfg: 'WindowsPath' object has no attribute 'startswith'
+2025-07-23 00:56:45,942 - ERROR - error in generating RAG answer : 'WindowsPath' object has no attribute 'startswith'
+2025-07-23 00:58:09,815 - DEBUG - Parsed question object: name=None age=None procedure='Air ambulance outside India' duration=None
+2025-07-23 00:58:09,816 - DEBUG - question created successfully!!
+2025-07-23 00:58:09,820 - ERROR - Error loading file C:/Users/sahai/OneDrive/Desktop/hackathon/test/DOC3.pdfg: File not found: C:/Users/sahai/OneDrive/Desktop/hackathon/test/DOC3.pdfg
+2025-07-23 00:58:09,820 - ERROR - error in generating RAG answer : File not found: C:/Users/sahai/OneDrive/Desktop/hackathon/test/DOC3.pdfg
+2025-07-23 01:00:11,546 - DEBUG - Parsed question object: name=None age=None procedure='Air ambulance' duration=None
+2025-07-23 01:00:11,547 - DEBUG - question created successfully!!
+2025-07-23 01:00:11,549 - WARNING - Corrected file extension to .pdf for: C:/Users/sahai/OneDrive/Desktop/hackathon/test/DOC3.pdf
+2025-07-23 01:00:11,753 - INFO - Successfully loaded text from: C:/Users/sahai/OneDrive/Desktop/hackathon/test/DOC3.pdf
+2025-07-23 01:00:11,754 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 01:00:12,596 - DEBUG - Documents saved to Vectorstore successfully !!.
+2025-07-23 01:00:12,630 - DEBUG - Vectorstore loaded from 'faiss_index' successfully!
+2025-07-23 01:00:17,874 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY. !!
+2025-07-23 01:00:19,208 - DEBUG - REFLECTOR ANSWER GENERATED SUCCESSFULLY.!!

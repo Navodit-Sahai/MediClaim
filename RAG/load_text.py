@@ -10,7 +10,7 @@ load_dotenv()
 
 def load_pdf(file_path: str) -> str:
     try:
-        file_path = os.path.normpath(file_path)
+        file_path = file_path.strip().replace('\\', '/')
         loader = PyPDFLoader(file_path)
         docs = loader.load()
         text = "\n".join(doc.page_content for doc in docs)
@@ -22,7 +22,8 @@ def load_pdf(file_path: str) -> str:
 
 def load_txt(file_path: str) -> str:
     try:
-        file_path = os.path.normpath(file_path)
+        file_path = file_path.strip().replace('\\', '/')
+        
         loader = TextLoader(file_path)
         docs = loader.load()
         text = "\n".join(doc.page_content for doc in docs)
@@ -69,21 +70,39 @@ def load_from_cloudinary(cloudinary_url: str, file_type: str = None) -> str:
         logger.error(f"Failed to load from Cloudinary: {cloudinary_url} | Error: {e}")
         raise
 
-def load_data(file_path: str) -> str:
+def load_data(file_path) -> str:
     try:
+        if not file_path:
+            raise ValueError("File path cannot be empty")
+
+        file_path = str(file_path).strip().replace('\\', '/')
+
         if file_path.startswith("https://res.cloudinary.com/"):
             return load_from_cloudinary(file_path)
 
-        file_path = os.path.normpath(file_path)
         ext = os.path.splitext(file_path)[1].lower()
+
+        if ext in [".pdfg", ".pdff", ".pfd"]:
+            corrected_path = file_path.replace(ext, ".pdf")
+            logger.warning(f"Corrected file extension to .pdf for: {corrected_path}")
+            file_path = corrected_path
+            ext = ".pdf"
+        elif ext in [".txtt", ".tx", ".text"]:
+            corrected_path = file_path.replace(ext, ".txt")
+            logger.warning(f"Corrected file extension to .txt for: {corrected_path}")
+            file_path = corrected_path
+            ext = ".txt"
+
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
 
         if ext == ".txt":
             return load_txt(file_path)
         elif ext == ".pdf":
             return load_pdf(file_path)
         else:
-            raise ValueError(f"Unsupported file type: {ext}")
+            raise ValueError(f"Unsupported file type: {ext}. Supported types: .pdf, .txt")
 
     except Exception as e:
         logger.error(f"Error loading file {file_path}: {e}")
-        return ""
+        raise

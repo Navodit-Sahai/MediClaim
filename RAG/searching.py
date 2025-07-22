@@ -3,7 +3,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from RAG.database import embeddings
 from FlagEmbedding import FlagReranker
-from database import load_from_cloudinary
+from RAG.database import embeddings, load_from_cloudinary
 from dotenv import load_dotenv
 import os
 
