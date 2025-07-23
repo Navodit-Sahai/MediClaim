@@ -2,8 +2,10 @@ fastapi
 langchain-groq
 langchain_community
 langgraph
-faiss-cpu
-uvicorn
+uvicorn[standard]
 cloudinary
 scikit-learn
 numpy
+pydantic
+python-dotenv
+requests
