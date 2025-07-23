@@ -588,3 +588,25 @@
 2025-07-23 01:00:12,630 - DEBUG - Vectorstore loaded from 'faiss_index' successfully!
 2025-07-23 01:00:17,874 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY. !!
 2025-07-23 01:00:19,208 - DEBUG - REFLECTOR ANSWER GENERATED SUCCESSFULLY.!!
+2025-07-23 10:32:56,319 - ERROR - Error parsing input: Invalid json output: I'm ready to extract the details from the user's input. Please provide the user input string.
+
+(Note: I'll extract the details and return the output in the specified JSON format)
+
+Waiting for the user input...
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
+2025-07-23 10:32:58,929 - INFO - Successfully loaded text from: C:/Users/sahai/OneDrive/Desktop/hackathon/test/DOC3.pdf
+2025-07-23 10:32:58,929 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 10:32:58,973 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 10:33:00,369 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 10:33:00,369 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 10:33:00,995 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 10:33:02,259 - DEBUG - REFLECTOR ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 10:40:15,187 - DEBUG - Parsed question object: name=None age=None procedure='Air ambulance' duration=None
+2025-07-23 10:40:15,204 - DEBUG - question created successfully!!
+2025-07-23 10:40:17,772 - INFO - Successfully loaded text from: C:/Users/sahai/OneDrive/Desktop/hackathon/test/DOC3.pdf
+2025-07-23 10:40:17,776 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 10:40:17,832 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 10:40:19,053 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 10:40:19,056 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 10:40:20,283 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 10:40:21,174 - DEBUG - REFLECTOR ANSWER GENERATED SUCCESSFULLY!!

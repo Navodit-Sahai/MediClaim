@@ -1,27 +1,53 @@
 from logs.logging_config import logger
-from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from RAG.database import embeddings
-from FlagEmbedding import FlagReranker
-from RAG.database import embeddings, load_from_cloudinary
+# Remove these heavy imports:
+# from langchain_community.vectorstores import FAISS
+# from langchain_community.embeddings import HuggingFaceEmbeddings
+# from FlagEmbedding import FlagReranker
+
+# Keep these:
+from RAG.database import load_from_cloudinary  # Your lightweight version
 from dotenv import load_dotenv
 import os
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
 
 load_dotenv()
-os.environ["HF_TOKEN"] = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-reranker = FlagReranker('BAAI/bge-reranker-base', use_fp16=True, 
-                        trust_remote_code=True,
-                        use_auth_token=os.environ["HF_TOKEN"])
 
-def load_vectorstore(save_path: str = "faiss_index", from_cloudinary: bool = False):
+class LightweightReranker:
+    def __init__(self):
+        self.vectorizer = TfidfVectorizer(max_features=500, stop_words='english')
+    
+    def compute_score(self, pairs):
+        """Lightweight reranking using TF-IDF similarity"""
+        queries = [pair[0] for pair in pairs]
+        docs = [pair[1] for pair in pairs]
+        all_texts = queries + docs
+        vectors = self.vectorizer.fit_transform(all_texts)
+        scores = []
+        for i, (query, doc) in enumerate(pairs):
+            query_vec = vectors[i:i+1]  
+            doc_vec = vectors[len(queries) + i:len(queries) + i + 1]   
+            similarity = cosine_similarity(query_vec, doc_vec)[0][0]
+            scores.append(similarity)
+        
+        return scores
+
+reranker = LightweightReranker()
+
+def load_vectorstore(save_path: str = "lightweight_index", from_cloudinary: bool = False):
     try:  
         if from_cloudinary:
-            # Cloudinary se load karo
             db = load_from_cloudinary(save_path)
         else:
-            # Original local loading
-            db = FAISS.load_local(save_path, embeddings, allow_dangerous_deserialization=True)
+            from RAG.database import vector_store
+            try:
+                db = vector_store
+                db.load_local(save_path)
+            except:
+                logger.warning(f"Local vectorstore '{save_path}' not found, trying cloudinary...")
+                db = load_from_cloudinary(save_path)
         
         logger.debug(f"Vectorstore loaded from '{save_path}' successfully!")
         return db
@@ -34,13 +60,11 @@ def semantic_search(query: str, top_k: int = 4, fetch_k: int = 8, use_cloudinary
         vectorstore = load_vectorstore(from_cloudinary=use_cloudinary)
         if not vectorstore:
             return "Vectorstore not available.", []
-
         initial_results = vectorstore.similarity_search(query, k=fetch_k)
         docs = [doc.page_content for doc in initial_results]
 
         if not docs:
             return "No relevant documents found.", []
-
         pairs = [(query, doc) for doc in docs]
         rerank_scores = reranker.compute_score(pairs)
         reranked = sorted(zip(initial_results, rerank_scores), key=lambda x: x[1], reverse=True)
@@ -48,11 +72,11 @@ def semantic_search(query: str, top_k: int = 4, fetch_k: int = 8, use_cloudinary
         top_results = reranked[:top_k]
         answer = "\n\n".join([doc.page_content for doc, _ in top_results])
         sources = "\n\n".join(
-    [
-        f"{doc.metadata.get('source', 'Unknown Source')} [Line {doc.metadata.get('line', 'N/A')}]: {doc.page_content.strip()}"
-        for doc, _ in top_results
-    ]
-)
+            [
+                f"{doc.metadata.get('source', 'Unknown Source')} [Line {doc.metadata.get('line', 'N/A')}]: {doc.page_content.strip()}"
+                for doc, _ in top_results
+            ]
+        )
         print(sources,"\n\n\n")
         return answer, sources
 

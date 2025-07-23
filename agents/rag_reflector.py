@@ -7,10 +7,6 @@ from pydantic_models import state
 from langchain.prompts import PromptTemplate
 from llm import model
 from logs.logging_config import logger
-from langchain_tavily import TavilySearch
-
-tool=TavilySearch(max_results=2)
-
 def rag_agent(st: state) -> state:
     try:
         file_path = st.file_path
@@ -18,11 +14,11 @@ def rag_agent(st: state) -> state:
         doubt = dic.procedure
         duration = dic.duration
         
-
         text = load_data(file_path=file_path)
         chunks = split_text(text=text)
         store(chunks)
-        content, sources = semantic_search(doubt)
+        
+        content, sources = semantic_search(doubt, use_cloudinary=True)
         
         template = """
 You are a medical policy coverage assistant with access to the user's medical policy document.
@@ -43,11 +39,10 @@ Your Task:
 
 Make sure the answer is helpful and formatted professionally.
 
-
 Instructions:
 
-1. Refine and shorten the rag-answer and keep it straight forward adn relevant to the medical policy coverage.
-2. Justify you answer by adding the source(line no. of the doc keep it same-exact line number mentioned in the rag source) of your answer from the Document source clearly.
+1. Refine and shorten the rag-answer and keep it straight forward and relevant to the medical policy coverage.
+2. Justify your answer by adding the source(line no. of the doc keep it same-exact line number mentioned in the rag source) of your answer from the Document source clearly.
 3. Improve the quality of rag-answer and keep it crisp.
 4. Answer using ONLY the document context provided.
 5. Give precise point-wise answers.
@@ -55,7 +50,6 @@ Instructions:
 7. Display the source like e.g [DOC-Line x].
 8. Don't skip any necessary information that may lead to the loss of the user.
 9. Include any amount listed in the context and highlight it.
-
         """
         
         prompt = PromptTemplate(template=template, input_variables=["doubt", "duration", "context"])
@@ -68,17 +62,18 @@ Instructions:
         response = model.invoke(inp) 
 
         st.rag_ans = response.content
-        logger.debug("RAG ANSWER GENERATED SUCCESSFULLY. !!")
+        logger.debug("RAG ANSWER GENERATED SUCCESSFULLY!!")
         return st
 
     except Exception as e:
-        logger.error(f"error in generating RAG answer : {e}")
+        logger.error(f"Error in generating RAG answer: {e}")
         raise
 
-def reflector(st:state)->state:
+def reflector(st: state) -> state:
     try:
-        rag_ans=st.rag_ans
-        input=st.input
+        rag_ans = st.rag_ans
+        input = st.input
+        
         template = """
 You are a medical policy expert assistant.
 
@@ -88,24 +83,28 @@ User Query: "{input}"
 RAG Answer: "{rag_ans}"
 
 Instructions:
-1. extract only relevant policy details:
-2. follow a professional medical policy struture while answering (headings and coverages and its source(line no. - exact line number mentioned in the rag_source) mention in the policy)
+1. Extract only relevant policy details:
+2. Follow a professional medical policy structure while answering (headings and coverages and its source(line no. - exact line number mentioned in the rag_source) mention in the policy)
 3. Don't add information not in RAG answer
-4. Keep the answer short , crisp and stright forward
-5. Add additional points mentioned in the policy only the one which you find relevant to the user query.
+4. Keep the answer short, crisp and straight forward
+5. Add additional points mentioned in the policy only the ones which you find relevant to the user query.
+
 Provide refined answer:
+
 CRITICAL: If the RAG answer only mentions procedure codes without actual coverage details, clarify that procedure codes alone do not indicate coverage terms, amounts, or eligibility.
 """
-        prompt=PromptTemplate(template=template,input_variables=["rag_ans","input"])
-        inp=prompt.format(
+        
+        prompt = PromptTemplate(template=template, input_variables=["rag_ans", "input"])
+        inp = prompt.format(
             rag_ans=rag_ans,
             input=input
         )
-        response=model.invoke(inp)
-        st.ref_ans=response
-        logger.debug("REFLECTOR ANSWER GENERATED SUCCESSFULLY.!!")
+        
+        response = model.invoke(inp)
+        st.ref_ans = response
+        logger.debug("REFLECTOR ANSWER GENERATED SUCCESSFULLY!!")
         return st
 
     except Exception as e:
-        logger.error("failed to generate reflector answer")
+        logger.error("Failed to generate reflector answer")
         raise
