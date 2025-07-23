@@ -9,3 +9,4 @@ numpy
 pydantic
 python-dotenv
 requests
+python-multipart

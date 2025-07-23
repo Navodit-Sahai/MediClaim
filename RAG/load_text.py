@@ -5,12 +5,13 @@ import requests
 import cloudinary
 import cloudinary.api
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
 
-def load_pdf(file_path: str) -> str:
+def load_pdf(file_path) -> str:
     try:
-        file_path = file_path.strip().replace('\\', '/')
+        file_path = str(Path(file_path)).replace('\\', '/')
         loader = PyPDFLoader(file_path)
         docs = loader.load()
         text = "\n".join(doc.page_content for doc in docs)
@@ -20,9 +21,9 @@ def load_pdf(file_path: str) -> str:
         logger.error(f"Failed to load PDF: {file_path} | Error: {e}")
         raise
 
-def load_txt(file_path: str) -> str:
+def load_txt(file_path) -> str:
     try:
-        file_path = file_path.strip().replace('\\', '/')
+        file_path = str(Path(file_path)).replace('\\', '/')
         
         loader = TextLoader(file_path)
         docs = loader.load()
@@ -75,7 +76,7 @@ def load_data(file_path) -> str:
         if not file_path:
             raise ValueError("File path cannot be empty")
 
-        file_path = str(file_path).strip().replace('\\', '/')
+        file_path = str(Path(file_path)).replace('\\', '/')
 
         if file_path.startswith("https://res.cloudinary.com/"):
             return load_from_cloudinary(file_path)
