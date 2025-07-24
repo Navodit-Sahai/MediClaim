@@ -1,110 +1,71 @@
 from RAG.load_text import load_data
 from RAG.splitting import split_text
-from RAG.database import store
+from RAG.database import store_to_cloudinary,load_from_cloudinary
 from RAG.searching import semantic_search
 from pathlib import Path
-from pydantic_models import state
+from pydantic_models import state, Justification, PolicyDecision
+from langchain.output_parsers import PydanticOutputParser
 from langchain.prompts import PromptTemplate
 from llm import model
 from logs.logging_config import logger
+
+parser = PydanticOutputParser(pydantic_object=PolicyDecision)
+
 def rag_agent(st: state) -> state:
     try:
         file_path = st.file_path
-        dic = st.question
-        doubt = dic.procedure
-        duration = dic.duration
-        
+        doubt = st.input
         text = load_data(file_path=file_path)
         chunks = split_text(text=text)
-        store(chunks)
-        
+
+        store_to_cloudinary(chunks, index_name="lightweight_index")
+        db=load_from_cloudinary()
         content, sources = semantic_search(doubt, use_cloudinary=True)
-        
+
         template = """
-You are a medical policy coverage assistant with access to the user's medical policy document.
+You are an expert AI system acting as an insurance claims processor.
+Your task is to analyze the provided insurance policy context and evaluate the user's query based *only* on the information within that document.
 
-User Query: "{doubt}" (Duration: {duration})
-Document Context: {context}
+**INSURANCE POLICY DOCUMENT:**
+---
+{context}
+---
 
-Your Task:
+**USER QUERY:**
+---
+{doubt}
+---
 
-1. Generate a precise, point-wise answer strictly based on the **document context**.
-2. For **each point**, precede the answer with a **relevant quoted line** from the document context (i.e., the supporting evidence).
-3. Ensure the answer is **clear, short, and relevant** to the user's query.
-4. DO NOT include any information not found in the document.
-5. Final output format should be:
+Based strictly on the document, evaluate the query. You must make a final decision of either "Approved", "Rejected", or "Pending".
+Do mention the context of your reason from the line no. and clause mentioned in the rag answer .
+Consider all the points mentionned in the context and dont miss any point which can be relevant .
+If the information is insufficient to make a clear decision, you MUST select 'Pending' and your 'reason' must clearly state what specific information is missing from the user's query. For example, if a rule depends on the cause being an accident and the query does not specify the cause, you must state that the cause of the injury (illness or accident) is required.
+Do mention any details regarding the amount insured,covered aur not covered.
+Don't remove any point that might be relevant. try to cover all the relevant points around the query.
+For the 'Approved Amount', if the claim is not approved or if no specific amount is mentioned, you must state 'NA'.
 
-- "**[Source Line]**" → Your refined answer point.
-- Repeat for all supporting points.
+Provide a structured JSON response according to the schema. Keep the 'reason' for each justification as simple and concise as possible.
 
-Make sure the answer is helpful and formatted professionally.
+{format_instructions}
+"""
 
-Instructions:
-
-1. Refine and shorten the rag-answer and keep it straight forward and relevant to the medical policy coverage.
-2. Justify your answer by adding the source(line no. of the doc keep it same-exact line number mentioned in the rag source) of your answer from the Document source clearly.
-3. Improve the quality of rag-answer and keep it crisp.
-4. Answer using ONLY the document context provided.
-5. Give precise point-wise answers.
-6. Also mention what is covered and what is not if mentioned in the rag-context.
-7. Display the source like e.g [DOC-Line x].
-8. Don't skip any necessary information that may lead to the loss of the user.
-9. Include any amount listed in the context and highlight it.
-        """
-        
-        prompt = PromptTemplate(template=template, input_variables=["doubt", "duration", "context"])
-        inp = prompt.format(
-            doubt=doubt,
-            duration=duration,
-            context=sources,
+        prompt = PromptTemplate(
+            template=template,
+            input_variables=["doubt", "context"],
+            partial_variables={"format_instructions": parser.get_format_instructions()}
         )
 
-        response = model.invoke(inp) 
+        chain = prompt | model | parser
 
-        st.rag_ans = response.content
+        response = chain.invoke({
+            "doubt": doubt,
+            "context": content
+        })
+
+        st.rag_ans = response
         logger.debug("RAG ANSWER GENERATED SUCCESSFULLY!!")
         return st
 
     except Exception as e:
         logger.error(f"Error in generating RAG answer: {e}")
-        raise
-
-def reflector(st: state) -> state:
-    try:
-        rag_ans = st.rag_ans
-        input = st.input
-        
-        template = """
-You are a medical policy expert assistant.
-
-Task: Refine the RAG response and provide only relevant information.
-
-User Query: "{input}"
-RAG Answer: "{rag_ans}"
-
-Instructions:
-1. Extract only relevant policy details:
-2. Follow a professional medical policy structure while answering (headings and coverages and its source(line no. - exact line number mentioned in the rag_source) mention in the policy)
-3. Don't add information not in RAG answer
-4. Keep the answer short, crisp and straight forward
-5. Add additional points mentioned in the policy only the ones which you find relevant to the user query.
-
-Provide refined answer:
-
-CRITICAL: If the RAG answer only mentions procedure codes without actual coverage details, clarify that procedure codes alone do not indicate coverage terms, amounts, or eligibility.
-"""
-        
-        prompt = PromptTemplate(template=template, input_variables=["rag_ans", "input"])
-        inp = prompt.format(
-            rag_ans=rag_ans,
-            input=input
-        )
-        
-        response = model.invoke(inp)
-        st.ref_ans = response
-        logger.debug("REFLECTOR ANSWER GENERATED SUCCESSFULLY!!")
-        return st
-
-    except Exception as e:
-        logger.error("Failed to generate reflector answer")
         raise

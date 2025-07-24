@@ -610,3 +610,225 @@ For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/er
 2025-07-23 10:40:19,056 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
 2025-07-23 10:40:20,283 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
 2025-07-23 10:40:21,174 - DEBUG - REFLECTOR ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 23:39:19,897 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpju5w56gw.pdf
+2025-07-23 23:39:20,326 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 23:39:20,897 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 23:39:23,100 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:39:23,106 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:39:23,107 - ERROR - Error in generating RAG answer: 'format_instructions'
+2025-07-23 23:43:03,409 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpchav6su6.pdf
+2025-07-23 23:43:03,413 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 23:43:03,445 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 23:43:04,998 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:43:05,001 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:43:06,042 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 23:44:36,016 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpz_4i1pe6.pdf
+2025-07-23 23:44:36,826 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 23:44:39,171 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 23:44:42,580 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:44:42,585 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:44:44,274 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 23:48:07,848 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpgc095nan.pdf
+2025-07-23 23:48:07,848 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 23:48:07,890 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 23:48:09,120 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:48:09,120 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:48:10,172 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 23:49:38,319 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpurzdobiw.pdf
+2025-07-23 23:49:38,324 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 23:49:38,360 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 23:49:39,535 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:49:39,535 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:49:40,584 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 23:50:42,381 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp40w91br3.pdf
+2025-07-23 23:50:42,386 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 23:50:42,416 - DEBUG - Documents saved to Vectorstore successfully.
+2025-07-23 23:50:43,738 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:50:43,775 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:50:46,317 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-23 23:54:51,331 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpxljk0dz4.pdf
+2025-07-23 23:54:51,865 - DEBUG - Text splitted successfully with line numbers!
+2025-07-23 23:54:57,342 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295098/vector_indices/lightweight_index.zip
+2025-07-23 23:54:58,335 - ERROR - Failed to load vector index from Cloudinary: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:54:58,335 - ERROR - Failed to load Vectorstore: Error 404 - Resource not found - vector_indices/lightweight_index
+2025-07-23 23:54:59,396 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:00:45,357 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpdtfcp2_d.pdf
+2025-07-24 00:00:45,360 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:00:48,398 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295449/vector_indices/lightweight_index.zip
+2025-07-24 00:00:50,356 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error:  for url: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295449/vector_indices/lightweight_index.zip
+2025-07-24 00:00:50,356 - ERROR - Failed to load Vectorstore: 401 Client Error:  for url: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295449/vector_indices/lightweight_index.zip
+2025-07-24 00:00:51,424 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:05:12,870 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpfa87pb4l.pdf
+2025-07-24 00:05:12,874 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:05:16,275 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295717/vector_indices/lightweight_index.zip
+2025-07-24 00:05:17,885 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error: Unauthorized for url: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295717/vector_indices/lightweight_index.zip
+2025-07-24 00:05:17,886 - ERROR - Failed to load Vectorstore: 401 Client Error: Unauthorized for url: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295717/vector_indices/lightweight_index.zip
+2025-07-24 00:05:19,050 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:06:45,037 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpaoa_k4by.pdf
+2025-07-24 00:06:45,042 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:06:48,208 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295809/vector_indices/lightweight_index.zip
+2025-07-24 00:06:49,457 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error:  for url: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295809/vector_indices/lightweight_index.zip
+2025-07-24 00:06:49,458 - ERROR - Failed to load Vectorstore: 401 Client Error:  for url: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295809/vector_indices/lightweight_index.zip
+2025-07-24 00:06:50,496 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:09:02,759 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp3e1aroj6.pdf
+2025-07-24 00:09:02,763 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:09:06,167 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753295947/vector_indices/lightweight_index.zip
+2025-07-24 00:09:07,257 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error:  for url: http://res.cloudinary.com/dqfogubxw/raw/upload/v1/vector_indices/lightweight_index.zip
+2025-07-24 00:09:07,258 - ERROR - Failed to load Vectorstore: 401 Client Error:  for url: http://res.cloudinary.com/dqfogubxw/raw/upload/v1/vector_indices/lightweight_index.zip
+2025-07-24 00:09:08,172 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:10:59,394 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpgs1ihcmc.pdf
+2025-07-24 00:10:59,394 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:11:00,749 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753296062/vector_indices/lightweight_index.zip
+2025-07-24 00:11:01,257 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error:  for url: http://res.cloudinary.com/dqfogubxw/raw/upload/v1/vector_indices/lightweight_index.zip
+2025-07-24 00:11:01,258 - ERROR - Failed to load Vectorstore: 401 Client Error:  for url: http://res.cloudinary.com/dqfogubxw/raw/upload/v1/vector_indices/lightweight_index.zip
+2025-07-24 00:11:02,414 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:12:16,612 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpf7eoszdy.pdf
+2025-07-24 00:12:16,620 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:12:17,528 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753296138/vector_indices/lightweight_index.zip
+2025-07-24 00:12:18,030 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error: Unauthorized for url: http://res.cloudinary.com/dqfogubxw/raw/upload/v1/vector_indices/lightweight_index.zip
+2025-07-24 00:12:18,031 - ERROR - Failed to load Vectorstore: 401 Client Error: Unauthorized for url: http://res.cloudinary.com/dqfogubxw/raw/upload/v1/vector_indices/lightweight_index.zip
+2025-07-24 00:12:19,074 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:14:33,318 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpg4d9efrq.pdf
+2025-07-24 00:14:33,322 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:14:35,779 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753296277/vector_indices/lightweight_index.zip
+2025-07-24 00:14:35,852 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error: Unauthorized for url: https://res.cloudinary.com/dqfogubxw/raw/upload/vector_indices/lightweight_index.zip.zip
+2025-07-24 00:14:35,852 - ERROR - Failed to load Vectorstore: 401 Client Error: Unauthorized for url: https://res.cloudinary.com/dqfogubxw/raw/upload/vector_indices/lightweight_index.zip.zip
+2025-07-24 00:14:36,594 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:25:19,346 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpoyrpp_cx.pdf
+2025-07-24 00:25:19,358 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:25:22,488 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753296923/vector_indices/lightweight_index.zip
+2025-07-24 00:25:22,590 - ERROR - Failed to load vector index from Cloudinary: 401 Client Error:  for url: https://res.cloudinary.com/dqfogubxw/raw/upload/vector_indices/lightweight_index.zip
+2025-07-24 00:25:22,590 - ERROR - Failed to load Vectorstore: 401 Client Error:  for url: https://res.cloudinary.com/dqfogubxw/raw/upload/vector_indices/lightweight_index.zip
+2025-07-24 00:25:23,592 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:26:43,016 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp0_vrk4_y.pdf
+2025-07-24 00:26:43,024 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:26:46,225 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753297007/vector_indices/lightweight_index.zip
+2025-07-24 00:26:46,227 - ERROR - Failed to load vector index from Cloudinary: Odd-length string
+2025-07-24 00:26:46,227 - ERROR - Failed to load Vectorstore: Odd-length string
+2025-07-24 00:26:47,297 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:29:05,830 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpgxizl9kj.pdf
+2025-07-24 00:29:05,834 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:29:07,048 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753297148/vector_indices/lightweight_index.zip
+2025-07-24 00:29:07,050 - ERROR - Failed to load vector index from Cloudinary: Odd-length string
+2025-07-24 00:29:07,050 - ERROR - Failed to load Vectorstore: Odd-length string
+2025-07-24 00:29:08,069 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:31:22,836 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpfdvz8tq6.pdf
+2025-07-24 00:31:22,840 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:31:23,747 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753297285/vector_indices/lightweight_index.zip
+2025-07-24 00:31:23,747 - ERROR - Failed to load vector index from Cloudinary: Odd-length string
+2025-07-24 00:31:23,747 - ERROR - Failed to load Vectorstore: Odd-length string
+2025-07-24 00:31:24,786 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:32:00,479 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpdueueigi.pdf
+2025-07-24 00:32:00,485 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:32:01,637 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753297322/vector_indices/lightweight_index.zip
+2025-07-24 00:32:01,637 - ERROR - Failed to load vector index from Cloudinary: Odd-length string
+2025-07-24 00:32:01,638 - ERROR - Failed to load Vectorstore: Odd-length string
+2025-07-24 00:32:02,674 - ERROR - Error in generating RAG answer: Failed to parse PolicyDecision from completion [{"clause": "NA", "reason": "The insurance policy document is empty, and no information is provided to make a decision."}]. Got: 1 validation error for PolicyDecision
+  Input should be a valid dictionary or instance of PolicyDecision [type=model_type, input_value=[{'clause': 'NA', 'reason...d to make a decision.'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/model_type
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
+2025-07-24 00:34:15,792 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpdc7o4k76.pdf
+2025-07-24 00:34:15,798 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:34:16,764 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753297458/vector_indices/lightweight_index.zip
+2025-07-24 00:34:16,765 - ERROR - Failed to load vector index from Cloudinary: Odd-length string
+2025-07-24 00:34:16,766 - ERROR - Failed to load Vectorstore: Odd-length string
+2025-07-24 00:34:17,856 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 00:35:02,806 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpc6stsb3h.pdf
+2025-07-24 00:35:02,812 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 00:35:04,214 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753297505/vector_indices/lightweight_index.zip
+2025-07-24 00:35:04,216 - ERROR - Failed to load vector index from Cloudinary: Odd-length string
+2025-07-24 00:35:04,217 - ERROR - Failed to load Vectorstore: Odd-length string
+2025-07-24 00:35:05,357 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:08:47,868 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpzvjd3ouo.pdf
+2025-07-24 11:08:47,890 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:08:51,662 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753335532/vector_indices/lightweight_index
+2025-07-24 11:08:52,070 - ERROR - Failed to load vector index from Cloudinary: HTTP 401
+2025-07-24 11:08:52,085 - ERROR - Failed to load Vectorstore: HTTP 401
+2025-07-24 11:08:53,462 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:15:22,731 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpo9tt44_a.pdf
+2025-07-24 11:15:22,748 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:15:26,088 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753335927/vector_indices/lightweight_index
+2025-07-24 11:15:26,088 - ERROR - Failed to load vector index from Cloudinary: 'lightweight_index.zip'
+2025-07-24 11:15:26,088 - ERROR - Failed to load Vectorstore: 'lightweight_index.zip'
+2025-07-24 11:15:27,136 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:17:33,460 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpatj7w8a7.pdf
+2025-07-24 11:17:33,521 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:17:37,064 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753336058/vector_indices/lightweight_index
+2025-07-24 11:17:37,065 - ERROR - Failed to load vector index from Cloudinary: Index 'lightweight_index.zip' not found. Upload first or check index name.
+2025-07-24 11:17:37,065 - ERROR - Failed to load Vectorstore: Index 'lightweight_index.zip' not found. Upload first or check index name.
+2025-07-24 11:17:38,102 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:22:10,011 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp2sc_g5lc.pdf
+2025-07-24 11:22:10,027 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:22:13,334 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753336334/vector_indices/lightweight_index
+2025-07-24 11:22:14,105 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:22:14,105 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:22:15,498 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:23:24,277 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpv8naoj06.pdf
+2025-07-24 11:23:24,277 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:23:25,324 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753336334/vector_indices/lightweight_index
+2025-07-24 11:23:25,740 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:23:25,741 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:23:27,165 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:29:19,300 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpsyw31qd4.pdf
+2025-07-24 11:29:19,422 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:29:23,391 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753336764/vector_indices/lightweight_index
+2025-07-24 11:29:24,346 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:29:24,841 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:29:24,843 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:29:26,551 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:38:18,540 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpu_ffq00j.pdf
+2025-07-24 11:38:18,544 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:38:19,767 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753336764/vector_indices/lightweight_index
+2025-07-24 11:38:19,907 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:38:20,048 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:38:20,048 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:38:21,145 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:38:47,329 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp2epvm735.pdf
+2025-07-24 11:38:47,346 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:38:48,237 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753336764/vector_indices/lightweight_index
+2025-07-24 11:38:48,380 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:38:48,523 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:38:48,525 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:38:49,900 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:45:34,371 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpb902flye.pdf
+2025-07-24 11:45:34,387 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:45:37,723 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753337739/vector_indices/lightweight_index
+2025-07-24 11:45:38,270 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:45:38,404 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:45:38,404 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:45:39,889 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:46:30,056 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpgic0uyz_.pdf
+2025-07-24 11:46:30,056 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:46:31,292 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753337739/vector_indices/lightweight_index
+2025-07-24 11:46:31,523 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:46:31,723 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:46:31,723 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:46:32,922 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:47:33,535 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpsg7kebky.pdf
+2025-07-24 11:47:33,540 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:47:36,806 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753337858/vector_indices/lightweight_index
+2025-07-24 11:47:37,340 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:47:37,456 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:47:37,456 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:47:38,673 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:48:54,306 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpb7gaapsc.pdf
+2025-07-24 11:48:54,306 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:48:57,846 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753337938/vector_indices/lightweight_index
+2025-07-24 11:48:58,540 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:48:58,656 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:48:58,656 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:49:00,052 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:51:30,717 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpqqyilha7.pdf
+2025-07-24 11:51:30,732 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:51:34,463 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753338095/vector_indices/lightweight_index
+2025-07-24 11:51:35,551 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:51:35,707 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:51:35,708 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:51:37,106 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 11:53:10,987 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpx3dtmi3q.pdf
+2025-07-24 11:53:10,992 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 11:53:12,056 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753338095/vector_indices/lightweight_index
+2025-07-24 11:53:12,245 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:53:12,374 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 11:53:12,374 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 11:53:13,634 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!

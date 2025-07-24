@@ -34,19 +34,32 @@ async def summarizer(
         with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
             content = await file.read()
             temp_file.write(content)
-            temp_path = Path(temp_file.name) 
-        
+            temp_path = Path(temp_file.name)
+
         request_state = state(
             input=input_text,
             file_path=temp_path
         )
-        
+
         from lang import build_graph
         graph = build_graph()
         response = graph.invoke(request_state)
-        
-        return {"summary": response["ref_ans"].content}
-        
+
+        decision_obj = response["rag_ans"]
+
+        formatted_response = {
+            "Final Decision": decision_obj.decision,
+            "Approved Amount": f"${decision_obj.approved_amount}" if isinstance(decision_obj.approved_amount, int) else decision_obj.approved_amount,
+            "Justification": [
+                {
+                    "Clause": j.clause,
+                    "Reason": j.reason
+                } for j in decision_obj.justification
+            ]
+        }
+
+        return {"result": formatted_response}
+
     except Exception as e:
         return {"error": str(e)}
     finally:

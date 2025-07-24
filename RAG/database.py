@@ -1,10 +1,9 @@
 import os
 import json
 import pickle
-import shutil
-import zipfile
 import requests
 import numpy as np
+import base64
 from dotenv import load_dotenv
 from typing import List
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -13,7 +12,6 @@ from langchain_core.documents import Document
 from logs.logging_config import logger
 import cloudinary
 import cloudinary.uploader
-import cloudinary.api
 
 load_dotenv()
 
@@ -76,68 +74,83 @@ def store(docs: List[Document]):
     except Exception as e:
         logger.error(f"Failed to store documents in Vectorstore: {e}")
 
+cloudinary_urls = {}
+
+def _load_urls():
+    try:
+        if os.path.exists("urls.json"):
+            with open("urls.json", 'r') as f:
+                return json.load(f)
+    except:
+        pass
+    return {}
+
+def _save_urls():
+    with open("urls.json", 'w') as f:
+        json.dump(cloudinary_urls, f)
+
+cloudinary_urls = _load_urls()
 
 def store_to_cloudinary(docs: List[Document], index_name: str = "lightweight_index"):
     try:
         vector_store.from_documents(docs)
-        local_path = f"{index_name}_temp"
-        vector_store.save_local(local_path)
-
-        zip_path = f"{index_name}.zip"
-        with zipfile.ZipFile(zip_path, 'w') as zipf:
-            for root, _, files in os.walk(local_path):
-                for file in files:
-                    file_path = os.path.join(root, file)
-                    arcname = os.path.relpath(file_path, local_path)
-                    zipf.write(file_path, arcname)
-
-        response = cloudinary.uploader.upload(
-            zip_path,
+        vector_store.save_local(index_name)
+        
+        vectorizer_data = base64.b64encode(pickle.dumps(vector_store.vectorizer)).decode()
+        vectors_data = base64.b64encode(pickle.dumps(vector_store.vectors)).decode()
+        docs_data = json.dumps([{"page_content": doc.page_content, "metadata": doc.metadata} for doc in vector_store.documents])
+        
+        json_data = json.dumps({
+            'vectorizer': vectorizer_data,
+            'vectors': vectors_data, 
+            'documents': docs_data
+        })
+        base64_data = base64.b64encode(json_data.encode()).decode()
+        data_uri = f"data:application/json;base64,{base64_data}"
+        
+        response = cloudinary.uploader.upload_large(
+            data_uri,
             resource_type="raw",
             public_id=f"vector_indices/{index_name}",
             overwrite=True
         )
 
-        shutil.rmtree(local_path)
-        os.remove(zip_path)
-
+        cloudinary_urls[index_name] = response['secure_url']
+        _save_urls()
+            
         logger.info(f"Vector index uploaded to Cloudinary: {response['secure_url']}")
         return response['secure_url']
 
     except Exception as e:
         logger.error(f"Failed to store vector index to Cloudinary: {e}")
-        raise
 
 
 def load_from_cloudinary(index_name: str = "lightweight_index"):
     try:
-        resource_info = cloudinary.api.resource(f"vector_indices/{index_name}", resource_type="raw")
-        zip_url = resource_info['secure_url']
-
-        response = requests.get(zip_url)
-        response.raise_for_status()
-
-        zip_path = f"{index_name}_download.zip"
-        with open(zip_path, 'wb') as f:
-            f.write(response.content)
-
-        extract_path = f"{index_name}_extracted"
-        with zipfile.ZipFile(zip_path, 'r') as zipf:
-            zipf.extractall(extract_path)
-
-        loaded_store = LightweightVectorStore()
-        loaded_store.load_local(extract_path)
-
-        os.remove(zip_path)
-        shutil.rmtree(extract_path)
-
-        logger.info("Vector index loaded from Cloudinary successfully.")
-        return loaded_store
+        index_name = index_name.replace('.zip', '')
+        if index_name not in cloudinary_urls:
+            raise Exception(f"Index '{index_name}' not found. Upload first or check index name.")
+        url = cloudinary_urls[index_name]
+        
+        response = requests.get(url)
+        
+        if response.status_code == 200:
+            data = json.loads(response.text)
+            
+            loaded_store = LightweightVectorStore()
+            loaded_store.vectorizer = pickle.loads(base64.b64decode(data['vectorizer']))
+            loaded_store.vectors = pickle.loads(base64.b64decode(data['vectors']))
+            docs_json = json.loads(data['documents'])
+            loaded_store.documents = [Document(page_content=doc["page_content"], metadata=doc["metadata"]) for doc in docs_json]
+            
+            logger.info("Vector index loaded from Cloudinary successfully.")
+            return loaded_store
+        else:
+            raise Exception(f"HTTP {response.status_code}")
 
     except Exception as e:
         logger.error(f"Failed to load vector index from Cloudinary: {e}")
         raise
-
 
 def load_vector_store(save_path: str = "lightweight_index", from_cloudinary: bool = False):
     try:

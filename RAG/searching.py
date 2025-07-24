@@ -1,11 +1,5 @@
 from logs.logging_config import logger
-# Remove these heavy imports:
-# from langchain_community.vectorstores import FAISS
-# from langchain_community.embeddings import HuggingFaceEmbeddings
-# from FlagEmbedding import FlagReranker
-
-# Keep these:
-from RAG.database import load_from_cloudinary  # Your lightweight version
+from RAG.database import load_from_cloudinary 
 from dotenv import load_dotenv
 import os
 from sklearn.metrics.pairwise import cosine_similarity
@@ -36,7 +30,7 @@ class LightweightReranker:
 
 reranker = LightweightReranker()
 
-def load_vectorstore(save_path: str = "lightweight_index", from_cloudinary: bool = False):
+def load_vectorstore(save_path: str = "lightweight_index.zip", from_cloudinary: bool = False):
     try:  
         if from_cloudinary:
             db = load_from_cloudinary(save_path)
@@ -55,7 +49,7 @@ def load_vectorstore(save_path: str = "lightweight_index", from_cloudinary: bool
         logger.error(f"Failed to load Vectorstore: {e}")
         return None
 
-def semantic_search(query: str, top_k: int = 4, fetch_k: int = 8, use_cloudinary: bool = False):
+def semantic_search(query: str, top_k: int = 5, fetch_k: int = 10, use_cloudinary: bool = False):
     try:
         vectorstore = load_vectorstore(from_cloudinary=use_cloudinary)
         if not vectorstore:
