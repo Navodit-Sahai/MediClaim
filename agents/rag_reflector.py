@@ -3,7 +3,7 @@ from RAG.splitting import split_text
 from RAG.database import store_to_cloudinary,load_from_cloudinary
 from RAG.searching import semantic_search
 from pathlib import Path
-from pydantic_models import state, Justification, PolicyDecision
+from pydantic_models import state, PolicyDecision
 from langchain.output_parsers import PydanticOutputParser
 from langchain.prompts import PromptTemplate
 from llm import model
@@ -14,7 +14,11 @@ parser = PydanticOutputParser(pydantic_object=PolicyDecision)
 def rag_agent(st: state) -> state:
     try:
         file_path = st.file_path
-        doubt = st.input
+        doubt = st.question.procedure
+        age= st.question.age
+        location=st.question.duration
+        duration=st.question.Location
+
         text = load_data(file_path=file_path)
         chunks = split_text(text=text)
 
@@ -22,36 +26,105 @@ def rag_agent(st: state) -> state:
         db=load_from_cloudinary()
         content, sources = semantic_search(doubt, use_cloudinary=True)
 
+       
         template = """
-You are an expert AI system acting as an insurance claims processor.
-Your task is to analyze the provided insurance policy context and evaluate the user's query based *only* on the information within that document.
+You are a certified AI Insurance Claims Analyst with expertise in policy interpretation, regulatory compliance, and claims assessment. Your role is to provide comprehensive, legally-sound analysis of insurance claims based on policy documents and user circumstances.
+
+**REGULATORY COMPLIANCE**: All assessments must align with IRDAI (Insurance Regulatory and Development Authority of India) guidelines and applicable insurance regulations.
 
 **INSURANCE POLICY DOCUMENT:**
 ---
 {context}
 ---
 
-**USER QUERY:**
+**CLAIM INQUIRY:**
 ---
 {doubt}
 ---
 
-Based strictly on the document, evaluate the query. You must make a final decision of either "Approved", "Rejected", or "Pending".
-Do mention the context of your reason from the line no. and clause mentioned in the rag answer .
-Consider all the points mentionned in the context and dont miss any point which can be relevant .
-If the information is insufficient to make a clear decision, you MUST select 'Pending' and your 'reason' must clearly state what specific information is missing from the user's query. For example, if a rule depends on the cause being an accident and the query does not specify the cause, you must state that the cause of the injury (illness or accident) is required.
-Do mention any details regarding the amount insured,covered aur not covered.
-Don't remove any point that might be relevant. try to cover all the relevant points around the query.
-For the 'Approved Amount', if the claim is not approved or if no specific amount is mentioned, you must state 'NA'.
+**POLICYHOLDER PROFILE:**
+- Age: {age}
+- Geographic Location: {location}
+- Policy Tenure: {duration}
+- Policy Status: Active/Continuous Coverage
 
-Provide a structured JSON response according to the schema. Keep the 'reason' for each justification as simple and concise as possible.
+---
 
-{format_instructions}
+## COMPREHENSIVE CLAIMS ANALYSIS FRAMEWORK
+
+### PHASE 1: POLICY DOCUMENT EXAMINATION
+Extract and analyze the following:
+1. **Coverage Scope**:
+   - Key benefits and sum insured
+   - Add-on covers or riders
+   - Pre/post-hospitalization periods
+   - Day-care procedures
+   - Network vs non-network provider terms
+
+2. **Exclusions and Limitations**:
+   - Permanent exclusions
+   - Waiting periods for specific illnesses or conditions
+   - Pre-existing disease rules
+   - Room rent or sub-limit restrictions
+
+3. **Financial Clauses**:
+   - Deductibles
+   - Sub-limits and co-payments
+   - Coverage limits (annual, per event)
+
+### PHASE 2: ELIGIBILITY ASSESSMENT
+Assess the claim query and mark each component as:
+- ✅ Covered
+- ❌ Excluded
+- ⚠️ Conditional (with explanations)
+- 📋 Requires Verification (if documentation needed)
+
+Include waiting period compliance, geographic limits, pre-existing clause application, and policy tenure implications.
+
+### PHASE 3: PERSONALIZED IMPACT ASSESSMENT
+Assess implications based on user's age, location, and tenure:
+- Any age-related conditions (like senior citizen co-pay)
+- Location-based network access or emergency clause
+- Completed waiting periods or loyalty bonuses
+
+### PHASE 4: FINANCIAL IMPACT
+Break down expected reimbursement vs out-of-pocket costs:
+- Maximum payable amounts (extract specific figures from policy when available)
+- Sub-limits impact (mention exact amounts if stated in policy)
+- Co-payment or room rent adjustments
+- Non-payables as per IRDAI or policy norms
+
+**Important**: Always extract and mention specific monetary amounts, percentages, and limits when they are clearly stated in the policy document. If exact amounts cannot be determined, explain the calculation method and provide example scenarios.
+
+### PHASE 5: ACTIONABLE RECOMMENDATIONS
+For each part of the claim:
+- Recommend next steps (documents, pre-auth)
+- Suggest claim route (cashless/reimbursement)
+- Offer alternatives if claim isn't fully covered
+- Provide estimated expense ranges when possible
+
+### PHASE 6: LEGAL AND CONSUMER RIGHTS
+Review:
+- Right to claim explanation under IRDAI norms
+- Ombudsman or grievance process
+- Duties of disclosure and impact of non-disclosure
+
+---
+
+**FINANCIAL EXTRACTION GUIDELINES**:
+- Extract and mention specific amounts, percentages, and limits from the policy
+- Calculate claim amounts when policy provides sufficient detail
+- If exact amounts aren't available, provide calculation formulas with policy limits
+- Always prioritize clarity over complexity in financial explanations
+
+**ADD CLAUSE REFERENCES AND DETAILED REASONING FOR EACH PHASE IN THE BELOW PROVIDED FORMAT-INSTRUCTIONS.**
+
+---
+**format-instructions**: {format_instructions}
 """
-
         prompt = PromptTemplate(
             template=template,
-            input_variables=["doubt", "context"],
+            input_variables=["doubt", "context","age","location","duration"],
             partial_variables={"format_instructions": parser.get_format_instructions()}
         )
 
@@ -59,7 +132,10 @@ Provide a structured JSON response according to the schema. Keep the 'reason' fo
 
         response = chain.invoke({
             "doubt": doubt,
-            "context": content
+            "context": content,
+            "age":age,
+            "location":location,
+            "duration":duration
         })
 
         st.rag_ans = response

@@ -832,3 +832,430 @@ For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/er
 2025-07-24 11:53:12,374 - INFO - Vector index loaded from Cloudinary successfully.
 2025-07-24 11:53:12,374 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
 2025-07-24 11:53:13,634 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 14:37:06,315 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpg_lw2p4x.pdf
+2025-07-24 14:37:06,319 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 14:37:09,660 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753348031/vector_indices/lightweight_index
+2025-07-24 14:37:10,800 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 14:37:11,294 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 14:37:11,294 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 14:37:12,957 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 20:15:13,225 - DEBUG - question created successfully.!!
+2025-07-24 20:15:15,587 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpb7gq1lrf.pdf
+2025-07-24 20:15:15,587 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 20:15:19,243 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753368320/vector_indices/lightweight_index
+2025-07-24 20:15:20,209 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 20:15:21,098 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 20:15:21,098 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 20:15:23,171 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 20:27:08,440 - DEBUG - question created successfully.!!
+2025-07-24 20:27:24,446 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmptemw2x10.pdf
+2025-07-24 20:27:24,450 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 20:27:28,019 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753368320/vector_indices/lightweight_index
+2025-07-24 20:27:29,043 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 20:27:29,667 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 20:27:29,667 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 20:27:31,314 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 20:29:51,803 - DEBUG - question created successfully.!!
+2025-07-24 20:29:54,308 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp08zpo_6n.pdf
+2025-07-24 20:29:54,314 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 20:30:05,505 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753369206/vector_indices/lightweight_index
+2025-07-24 20:30:05,505 - ERROR - Failed to load vector index from Cloudinary: Index 'simple_index' not found. Upload first or check index name.
+2025-07-24 20:30:05,505 - ERROR - Error in generating RAG answer: Index 'simple_index' not found. Upload first or check index name.
+2025-07-24 20:38:51,334 - DEBUG - question created successfully.!!
+2025-07-24 20:38:54,206 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp2jdky4hi.pdf
+2025-07-24 20:38:54,206 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 20:39:05,456 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753369206/vector_indices/lightweight_index
+2025-07-24 20:39:05,456 - ERROR - Failed to load vector index from Cloudinary: Index 'simple_index' not found. Upload first or check index name.
+2025-07-24 20:39:05,456 - ERROR - Error in generating RAG answer: Index 'simple_index' not found. Upload first or check index name.
+2025-07-24 20:41:31,690 - DEBUG - question created successfully.!!
+2025-07-24 20:41:34,175 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpiw319onr.pdf
+2025-07-24 20:41:34,177 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 20:41:43,765 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753369206/vector_indices/lightweight_index
+2025-07-24 20:41:43,767 - ERROR - Failed to load vector index from Cloudinary: Index 'simple_index' not found. Upload first or check index name.
+2025-07-24 20:41:43,767 - ERROR - Error in generating RAG answer: Index 'simple_index' not found. Upload first or check index name.
+2025-07-24 20:48:42,169 - DEBUG - question created successfully.!!
+2025-07-24 20:48:44,342 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpfstm5zok.pdf
+2025-07-24 20:48:44,346 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 20:48:47,691 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753370329/vector_indices/lightweight_index
+2025-07-24 20:48:49,687 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 20:48:50,025 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 20:48:50,025 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 20:48:51,595 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:05:42,016 - DEBUG - question created successfully.!!
+2025-07-24 22:05:44,831 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmppck0lkk4.pdf
+2025-07-24 22:05:44,831 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:05:51,985 - ERROR - Failed to store vector index to Cloudinary: 'Document' object is not subscriptable
+2025-07-24 22:05:52,560 - ERROR - Failed to load vector index from Cloudinary: 'index'
+2025-07-24 22:05:52,567 - ERROR - Error in generating RAG answer: 'index'
+2025-07-24 22:07:39,774 - DEBUG - question created successfully.!!
+2025-07-24 22:07:42,300 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpdhj0d8_k.pdf
+2025-07-24 22:07:42,304 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:07:53,875 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753375075/vector_indices/lightweight_index
+2025-07-24 22:08:00,149 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:08:04,658 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:08:04,658 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 22:08:04,795 - ERROR - Semantic search failed: index 63 is out of bounds for axis 0 with size 10
+2025-07-24 22:08:04,795 - ERROR - Error in generating RAG answer: index 63 is out of bounds for axis 0 with size 10
+2025-07-24 22:11:04,668 - DEBUG - question created successfully.!!
+2025-07-24 22:11:07,113 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpp0o2lh9u.pdf
+2025-07-24 22:11:07,113 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:11:17,863 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753375279/vector_indices/lightweight_index
+2025-07-24 22:11:23,216 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:11:28,736 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:11:28,736 - DEBUG - Vectorstore loaded from 'lightweight_index.zip' successfully!
+2025-07-24 22:11:28,841 - ERROR - Semantic search failed: index 63 is out of bounds for axis 0 with size 10
+2025-07-24 22:11:28,841 - ERROR - Error in generating RAG answer: index 63 is out of bounds for axis 0 with size 10
+2025-07-24 22:13:49,116 - DEBUG - question created successfully.!!
+2025-07-24 22:13:51,742 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpb7n1ogo1.pdf
+2025-07-24 22:13:51,742 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:14:02,725 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753375279/vector_indices/lightweight_index
+2025-07-24 22:14:07,772 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:14:13,095 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:14:13,203 - ERROR - Semantic search failed: index 63 is out of bounds for axis 0 with size 10
+2025-07-24 22:14:14,724 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:31:26,412 - DEBUG - question created successfully.!!
+2025-07-24 22:31:37,979 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpx33nkfg0.pdf
+2025-07-24 22:31:37,998 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:32:08,562 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:32:14,013 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:32:18,860 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:32:18,962 - ERROR - Semantic search failed: index 63 is out of bounds for axis 0 with size 5
+2025-07-24 22:32:23,284 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:39:57,051 - DEBUG - question created successfully.!!
+2025-07-24 22:40:00,078 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp32kk07bp.pdf
+2025-07-24 22:40:00,094 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:40:11,057 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:40:15,075 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:40:19,077 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:40:20,819 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:43:10,898 - DEBUG - question created successfully.!!
+2025-07-24 22:43:19,230 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp0buqtwju.pdf
+2025-07-24 22:43:19,230 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:43:27,566 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:43:32,199 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:43:36,357 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:43:37,820 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:46:47,262 - DEBUG - question created successfully.!!
+2025-07-24 22:46:50,276 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpwkvwor3w.pdf
+2025-07-24 22:46:50,296 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:47:01,475 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:47:05,215 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:47:09,391 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:47:09,490 - ERROR - Error in generating RAG answer: 'Input to PromptTemplate is missing variables {\'\\n  "result"\'}.  Expected: [\'\\n  "result"\', \'age\', \'context\', \'doubt\', \'duration\', \'location\'] Received: [\'doubt\', \'context\', \'age\', \'location\', \'duration\']\nNote: if you intended {\n  "result"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n  "result"}}\'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT '
+2025-07-24 22:48:09,696 - DEBUG - question created successfully.!!
+2025-07-24 22:48:12,797 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpidkclexy.pdf
+2025-07-24 22:48:12,811 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:48:24,009 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:48:28,746 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:48:33,558 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:48:35,833 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:49:59,677 - DEBUG - question created successfully.!!
+2025-07-24 22:50:02,180 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpgh7yqkdd.pdf
+2025-07-24 22:50:02,180 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:50:13,160 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:50:18,107 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:50:23,226 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:50:25,297 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:52:24,440 - DEBUG - question created successfully.!!
+2025-07-24 22:52:27,539 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpdve4bh63.pdf
+2025-07-24 22:52:27,542 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:52:36,114 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:52:40,131 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:52:44,334 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:52:46,190 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:54:53,810 - DEBUG - question created successfully.!!
+2025-07-24 22:54:56,798 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmpt84311eq.pdf
+2025-07-24 22:54:56,798 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:55:07,455 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:55:12,341 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:55:17,007 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:55:19,155 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:57:30,109 - DEBUG - question created successfully.!!
+2025-07-24 22:57:32,609 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmps__8dej9.pdf
+2025-07-24 22:57:32,609 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:57:43,512 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:57:48,265 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:57:53,565 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:57:55,737 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 22:58:55,092 - DEBUG - question created successfully.!!
+2025-07-24 22:59:03,213 - INFO - Successfully loaded text from: C:/Users/sahai/AppData/Local/Temp/tmp62tn_9_r.pdf
+2025-07-24 22:59:03,213 - DEBUG - Text splitted successfully with line numbers!
+2025-07-24 22:59:11,768 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753376529/vector_indices/lightweight_index
+2025-07-24 22:59:16,592 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:59:21,999 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-24 22:59:24,515 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-24 23:26:52,283 - DEBUG - question created successfully.!!
+2025-07-24 23:26:52,402 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmpc0r3x5ql.pdf | Error: Stream has ended unexpectedly
+2025-07-24 23:26:52,403 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpc0r3x5ql.pdf: Stream has ended unexpectedly
+2025-07-24 23:26:52,403 - ERROR - Error in generating RAG answer: Stream has ended unexpectedly
+2025-07-24 23:32:59,478 - DEBUG - question created successfully.!!
+2025-07-24 23:32:59,600 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmp09ubppri.pdf | Error: Stream has ended unexpectedly
+2025-07-24 23:32:59,600 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmp09ubppri.pdf: Stream has ended unexpectedly
+2025-07-24 23:32:59,600 - ERROR - Error in generating RAG answer: Stream has ended unexpectedly
+2025-07-24 23:43:17,985 - DEBUG - question created successfully.!!
+2025-07-24 23:43:18,144 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmpim6zvv_w.pdf | Error: Stream has ended unexpectedly
+2025-07-24 23:43:18,145 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpim6zvv_w.pdf: Stream has ended unexpectedly
+2025-07-24 23:43:18,145 - ERROR - Error in generating RAG answer: Stream has ended unexpectedly
+2025-07-24 23:45:46,133 - DEBUG - question created successfully.!!
+2025-07-24 23:45:46,255 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmp6hjespjk.pdf | Error: Stream has ended unexpectedly
+2025-07-24 23:45:46,255 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmp6hjespjk.pdf: Stream has ended unexpectedly
+2025-07-24 23:45:46,255 - ERROR - Error in generating RAG answer: Stream has ended unexpectedly
+2025-07-24 23:48:40,312 - DEBUG - question created successfully.!!
+2025-07-24 23:48:40,428 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmpg0e9rulc.pdf | Error: Stream has ended unexpectedly
+2025-07-24 23:48:40,428 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpg0e9rulc.pdf: Stream has ended unexpectedly
+2025-07-24 23:48:40,429 - ERROR - Error in generating RAG answer: Stream has ended unexpectedly
+2025-07-24 23:54:13,964 - DEBUG - question created successfully.!!
+2025-07-24 23:54:13,996 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmplgbbz0wl.pdf | Error: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:54:13,996 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmplgbbz0wl.pdf: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:54:13,996 - ERROR - Error in generating RAG answer: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:56:38,925 - DEBUG - question created successfully.!!
+2025-07-24 23:56:38,938 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmpfzugppo1.pdf | Error: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:56:38,939 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpfzugppo1.pdf: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:56:38,939 - ERROR - Error in generating RAG answer: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:58:58,490 - DEBUG - question created successfully.!!
+2025-07-24 23:58:58,502 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmp_ly3oq4i.pdf | Error: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:58:58,502 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmp_ly3oq4i.pdf: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-24 23:58:58,502 - ERROR - Error in generating RAG answer: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-25 00:00:41,311 - DEBUG - question created successfully.!!
+2025-07-25 00:00:41,311 - INFO - load_data called with: C:/Users/sahai/AppData/Local/Temp/tmpdjaeqmif.pdf
+2025-07-25 00:00:41,340 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmpdjaeqmif.pdf | Error: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-25 00:00:41,340 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpdjaeqmif.pdf: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-25 00:00:41,341 - ERROR - Error in generating RAG answer: Invalid PDF file - corrupt or wrong format. Header: b'Deliv'
+2025-07-25 00:03:02,161 - DEBUG - question created successfully.!!
+2025-07-25 00:03:02,161 - INFO - load_data called with: C:/Users/sahai/AppData/Local/Temp/tmpglsa9usb.pdf
+2025-07-25 00:03:02,173 - INFO - File header: b'Delivered-To: sahainavodit781@gmail.com\r\nReceived:'
+2025-07-25 00:03:02,173 - INFO - Local file detected as email
+2025-07-25 00:03:02,174 - INFO - Original ext: .pdf, Detected ext: .eml
+2025-07-25 00:03:02,174 - ERROR - Failed to load Email: C:/Users/sahai/AppData/Local/Temp/tmpglsa9usb.pdf | Error: Unsupported email format: .pdf
+2025-07-25 00:03:02,175 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpglsa9usb.pdf: Unsupported email format: .pdf
+2025-07-25 00:03:02,175 - ERROR - Error in generating RAG answer: Unsupported email format: .pdf
+2025-07-25 00:05:04,764 - DEBUG - question created successfully.!!
+2025-07-25 00:05:04,764 - INFO - load_data called with: C:/Users/sahai/AppData/Local/Temp/tmpj5gtt8o8.pdf
+2025-07-25 00:05:04,776 - INFO - File header: b'Delivered-To: sahainavodit781@gmail.com\r\nReceived:'
+2025-07-25 00:05:04,776 - INFO - Local file detected as email
+2025-07-25 00:05:04,776 - INFO - Original ext: .pdf, Detected ext: .eml
+2025-07-25 00:05:04,779 - ERROR - Failed to load Email: C:/Users/sahai/AppData/Local/Temp/tmpj5gtt8o8.pdf | Error: unstructured package not found, please install it with `pip install unstructured`
+2025-07-25 00:05:04,780 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpj5gtt8o8.pdf: unstructured package not found, please install it with `pip install unstructured`
+2025-07-25 00:05:04,780 - ERROR - Error in generating RAG answer: unstructured package not found, please install it with `pip install unstructured`
+2025-07-25 00:07:29,254 - DEBUG - question created successfully.!!
+2025-07-25 00:07:29,254 - INFO - load_data called with: C:/Users/sahai/AppData/Local/Temp/tmpa3psfya7.pdf
+2025-07-25 00:07:29,257 - INFO - File header: b'Delivered-To: sahainavodit781@gmail.com\r\nReceived:'
+2025-07-25 00:07:29,257 - INFO - Local file detected as email
+2025-07-25 00:07:29,257 - INFO - Original ext: .pdf, Detected ext: .eml
+2025-07-25 00:07:29,257 - INFO - Successfully loaded Email: C:/Users/sahai/AppData/Local/Temp/tmpa3psfya7.pdf
+2025-07-25 00:07:29,272 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:07:32,620 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753382254/vector_indices/lightweight_index
+2025-07-25 00:07:37,375 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:07:41,961 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:07:41,964 - ERROR - Semantic search failed: 'NoneType' object is not subscriptable
+2025-07-25 00:07:42,766 - ERROR - Error in generating RAG answer: Invalid json output: I apologize, but I cannot provide a response as the policy document is empty, and there is no user query provided. The policy document is essential in determining the coverage and eligibility of the user's claim. Without it, I cannot make an informed decision.
+
+If you could provide a valid policy document and a user query, I would be happy to assist you in determining the eligibility and coverage of the user's claim.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
+2025-07-25 00:10:00,282 - DEBUG - question created successfully.!!
+2025-07-25 00:10:00,282 - INFO - load_data called with: C:/Users/sahai/AppData/Local/Temp/tmp9u3awwfx.pdf
+2025-07-25 00:10:00,315 - INFO - File header: b'MIME-Version: 1.0\r\nDate: Fri, 25 Jul 2025 00:08:51'
+2025-07-25 00:10:00,315 - INFO - Original ext: .pdf, Detected ext: .pdf
+2025-07-25 00:10:00,325 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmp9u3awwfx.pdf | Error: Invalid PDF file - corrupt or wrong format. Header: b'MIME-'
+2025-07-25 00:10:00,325 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmp9u3awwfx.pdf: Invalid PDF file - corrupt or wrong format. Header: b'MIME-'
+2025-07-25 00:10:00,325 - ERROR - Error in generating RAG answer: Invalid PDF file - corrupt or wrong format. Header: b'MIME-'
+2025-07-25 00:13:47,314 - DEBUG - question created successfully.!!
+2025-07-25 00:13:47,314 - INFO - load_data called with: C:/Users/sahai/AppData/Local/Temp/tmpyrkt_k39.pdf
+2025-07-25 00:13:47,316 - INFO - File header: b'MIME-Version: 1.0\r\nDate: Fri, 25 Jul 2025 00:08:51'
+2025-07-25 00:13:47,316 - INFO - Original ext: .pdf, Detected ext: .pdf
+2025-07-25 00:13:47,316 - ERROR - Failed to load PDF: C:/Users/sahai/AppData/Local/Temp/tmpyrkt_k39.pdf | Error: Invalid PDF file - corrupt or wrong format. Header: b'MIME-'
+2025-07-25 00:13:47,316 - ERROR - Error loading file C:/Users/sahai/AppData/Local/Temp/tmpyrkt_k39.pdf: Invalid PDF file - corrupt or wrong format. Header: b'MIME-'
+2025-07-25 00:13:47,316 - ERROR - Error in generating RAG answer: Invalid PDF file - corrupt or wrong format. Header: b'MIME-'
+2025-07-25 00:16:10,151 - DEBUG - question created successfully.!!
+2025-07-25 00:16:10,151 - INFO - load_data called with: C:/Users/sahai/AppData/Local/Temp/tmpgpygwx1b.pdf
+2025-07-25 00:16:10,151 - INFO - File header: b'MIME-Version: 1.0\r\nDate: Fri, 25 Jul 2025 00:08:51'
+2025-07-25 00:16:10,151 - INFO - Local file detected as email
+2025-07-25 00:16:10,151 - INFO - Original ext: .pdf, Detected ext: .eml
+2025-07-25 00:16:10,151 - INFO - Successfully loaded Email: C:/Users/sahai/AppData/Local/Temp/tmpgpygwx1b.pdf
+2025-07-25 00:16:10,151 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:16:12,598 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753382774/vector_indices/lightweight_index
+2025-07-25 00:16:17,629 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:16:21,731 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:16:23,057 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:18:19,788 - DEBUG - question created successfully.!!
+2025-07-25 00:18:19,791 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:18:22,231 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753382774/vector_indices/lightweight_index
+2025-07-25 00:18:25,788 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:18:30,140 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:18:32,091 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:22:44,587 - DEBUG - question created successfully.!!
+2025-07-25 00:22:44,589 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:22:46,970 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753382774/vector_indices/lightweight_index
+2025-07-25 00:22:50,741 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:22:56,227 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:22:59,292 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:24:24,936 - DEBUG - question created successfully.!!
+2025-07-25 00:24:26,114 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:24:27,079 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753383268/vector_indices/lightweight_index
+2025-07-25 00:24:30,894 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:24:34,774 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:24:41,624 - ERROR - Error in generating RAG answer: Invalid json output: Here is the comprehensive claim analysis framework for the user's query:
+
+```
+{
+  "decision": "Approved",
+  "approved_amount": 0, // To be determined based on hospitalization expenses
+  "justification": [
+    {
+      "clause": "Healthy baby expenses / well baby care expenses",
+      "reason": "The policy covers expenses incurred for the newborn baby after birth until the first discharge from the hospital, including routine medical care and immunizations."
+    },
+    {
+      "clause": "Routine Medical Care would include expenses recommended by a doctor and incurred on – Pharmacy, Diagnostics, Doctor Consultations and Therapy.",
+      "reason": "The policy covers routine medical care expenses, including pharmacy, diagnostics, doctor consultations, and therapy, as recommended by a doctor."
+    },
+    {
+      "clause": "Well Baby Well Mother - Add On Wordings",
+      "reason": "The add-on cover provides additional benefits for well-baby care and well-mother care, including routine preventive care services and immunizations."
+    },
+    {
+      "clause": "Air Ambulance Services",
+      "reason": "The policy covers air ambulance services for medically necessary treatment, certified by a medical practitioner, and subject to specific terms and conditions."
+    }
+  ]
+}
+```
+
+**PHASE 1: POLICY DOCUMENT EXAMINATION**
+
+1. **Coverage Scope Analysis**:
+   - Primary coverage benefits: Healthy baby expenses, well baby care expenses, and air ambulance services
+   - Add-on covers and riders: Well Baby Well Mother - Add On Wordings
+   - Network hospitals and cashless facilities: Not specified
+   - Pre and post-hospitalization coverage periods: Up to first discharge from hospital
+   - Day-care procedures inclusion/exclusion: Not applicable
+
+2. **Exclusions and Limitations Matrix**:
+   - Permanent exclusions: Any infertility treatments, charges payable under the maternity section (if opted as an optional cover)
+   - Temporary exclusions with waiting periods: Not applicable
+   - Pre-existing disease clauses and definitions: Not applicable
+   - Treatment-specific exclusions: Not applicable
+   - Geographic limitations: Not applicable
+
+3. **Financial Parameters**:
+   - Sum insured and available balance: Not specified
+   - Sub-limits for specific treatments/conditions: Not applicable
+   - Co-payment percentages (if applicable): Not applicable
+   - Deductibles and room rent restrictions: Not applicable
+   - Annual/per-incident limits: Not applicable
+
+**PHASE 2: ELIGIBILITY ASSESSMENT MATRIX**
+
+1. **Treatment/Procedure Eligibility**:
+   - C-Section delivery: COVERED (under maternity hospitalization period)
+   - Preventive care: COVERED (under routine medical care and well-baby care expenses)
+   - Immunizations: COVERED (under routine medical care and well-baby care expenses)
+   - Air ambulance transfer: COVERED (subject to specific terms and conditions)
+
+2. **Waiting Period Compliance**:
+   - Initial waiting period status: Not applicable
+   - Specific disease waiting periods: Not applicable
+   - Pre-existing condition waiting periods: Not applicable
+   - Policy continuity requirements: Not applicable
+
+3. **Geographic Coverage Validation**:
+   - Treatment location acceptability: Not applicable
+   - Network hospital availability: Not specified
+   - Emergency treatment provisions: COVERED (subject to specific terms and conditions)
+   - International coverage: Not applicable
+
+**PHASE 3: PERSONALIZED IMPACT ASSESSMENT**
+
+1. **Age-Related Considerations**:
+   - Age-specific exclusions or limitations: Not applicable
+   - Senior citizen benefits or restrictions: Not applicable
+   - Age-based co-payment requirements: Not applicable
+
+2. **Location-Specific Factors**:
+   - Regional network hospital availability: Not specified
+   - State-specific regulatory requirements: Not applicable
+   - Distance-based emergency coverage: Not applicable
+
+3. **Policy Duration Impact**:
+   - Continuous coverage benefits: Not applicable
+   - Loyalty bonuses or enhanced limits: Not applicable
+   - Waiting period completion status: Not applicable
+
+**PHASE 4: FINANCIAL IMPACT CALCULATION**
+
+1. **Estimated Coverage Amount**:
+   - Maximum payable amount under the policy: To be determined based on hospitalization expenses
+   - Sub-limit applications: Not applicable
+   - Co-payment calculations: Not applicable
+   - Room rent ratio impact: Not applicable
+
+2. **Out-of-Pocket Expenses**:
+   - Non-payable items as per policy: Any infertility treatments, charges payable under the maternity section (if opted as an optional cover)
+   - Amounts exceeding sub-limits: Not applicable
+   - Deductible amounts: Not applicable
+
+**PHASE 5: ACTIONABLE RECOMMENDATIONS**
+
+1. **Immediate Actions Required**:
+   - Documentation needed: Medical records, hospital bills, and prescription receipts
+   - Pre-authorization requirements: Not applicable
+   - Network hospital selection guidance: Not specified
+
+2. **Alternative Coverage Options**:
+   - If primary treatment excluded, suggest covered alternatives: Not applicable
+   - Identify partial coverage opportunities: Not applicable
+   - Recommend additional riders if beneficial: Not applicable
+
+3. **Claims Process Guidance**:
+   - Cashless vs reimbursement process: Not specified
+   - Timeline for claim processing: Not specified
+   - Required medical documentation: Medical records, hospital bills, and prescription receipts
+
+**PHASE 6: REGULATORY AND LEGAL CONSIDERATIONS**
+
+1. **Consumer Protection Rights**:
+   - Right to explanation of claim decisions: Available
+   - Grievance redressal mechanisms: Available
+   - Ombudsman escalation options: Available
+
+2. **Disclosure Requirements**:
+   - Material facts that must be disclosed: Not applicable
+   - Impact of non-disclosure on claims: Not applicable
+   - Good faith obligations: Applicable
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
+2025-07-25 00:29:45,549 - DEBUG - question created successfully.!!
+2025-07-25 00:29:45,826 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:29:48,301 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753383268/vector_indices/lightweight_index
+2025-07-25 00:29:52,415 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:29:55,892 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:29:59,219 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:31:27,535 - DEBUG - question created successfully.!!
+2025-07-25 00:31:27,822 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:31:30,598 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753383268/vector_indices/lightweight_index
+2025-07-25 00:31:34,507 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:31:38,496 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:31:42,031 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:34:58,782 - DEBUG - question created successfully.!!
+2025-07-25 00:34:59,077 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:35:01,428 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753383268/vector_indices/lightweight_index
+2025-07-25 00:35:04,576 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:35:08,098 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:35:12,470 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:37:00,839 - DEBUG - question created successfully.!!
+2025-07-25 00:37:06,320 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:37:14,163 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753384035/vector_indices/lightweight_index
+2025-07-25 00:37:17,748 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:37:21,802 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:37:25,832 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:41:23,604 - DEBUG - question created successfully.!!
+2025-07-25 00:42:16,183 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:42:25,723 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753384035/vector_indices/lightweight_index
+2025-07-25 00:42:29,372 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:42:34,383 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:42:38,540 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-25 00:44:09,795 - DEBUG - question created successfully.!!
+2025-07-25 00:44:10,094 - DEBUG - Text splitted successfully with line numbers!
+2025-07-25 00:44:12,534 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753384454/vector_indices/lightweight_index
+2025-07-25 00:44:16,243 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:44:19,593 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-25 00:44:23,478 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
