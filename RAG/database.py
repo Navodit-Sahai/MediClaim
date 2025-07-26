@@ -1,6 +1,5 @@
 import os
 import json
-import pickle
 import requests
 import numpy as np
 import base64
