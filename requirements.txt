@@ -15,3 +15,4 @@ sentence-transformers>=2.2.0
 langchain-core>=0.1.0
 unstructured
 pathlib
+faiss-cpu

@@ -1259,3 +1259,34 @@ For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/er
 2025-07-25 00:44:16,243 - INFO - Vector index loaded from Cloudinary successfully.
 2025-07-25 00:44:19,593 - INFO - Vector index loaded from Cloudinary successfully.
 2025-07-25 00:44:23,478 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-26 10:03:45,288 - DEBUG - question created successfully.!!
+2025-07-26 10:03:48,383 - DEBUG - Text splitted successfully with line numbers!
+2025-07-26 10:03:58,614 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753504438/vector_indices/lightweight_index
+2025-07-26 10:04:03,231 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:04:06,820 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:10:08,705 - DEBUG - question created successfully.!!
+2025-07-26 10:10:11,367 - DEBUG - Text splitted successfully with line numbers!
+2025-07-26 10:10:21,176 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753504438/vector_indices/lightweight_index
+2025-07-26 10:10:25,657 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:10:30,651 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:10:33,024 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-26 10:11:05,315 - DEBUG - question created successfully.!!
+2025-07-26 10:11:07,511 - DEBUG - Text splitted successfully with line numbers!
+2025-07-26 10:11:17,078 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753504438/vector_indices/lightweight_index
+2025-07-26 10:11:20,481 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:11:25,611 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:11:28,438 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-26 10:11:28,438 - DEBUG - Parsed decision: Pending
+2025-07-26 10:11:28,438 - DEBUG - Approved amount: NA
+2025-07-26 10:14:28,063 - DEBUG - question created successfully.!!
+2025-07-26 10:14:30,276 - DEBUG - Text splitted successfully with line numbers!
+2025-07-26 10:14:39,318 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753504438/vector_indices/lightweight_index
+2025-07-26 10:14:44,049 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:14:48,145 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:14:49,776 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-26 10:17:25,016 - DEBUG - question created successfully.!!
+2025-07-26 10:17:27,347 - DEBUG - Text splitted successfully with line numbers!
+2025-07-26 10:17:36,674 - INFO - Vector index uploaded to Cloudinary: https://res.cloudinary.com/dqfogubxw/raw/upload/v1753504438/vector_indices/lightweight_index
+2025-07-26 10:17:40,995 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:17:45,012 - INFO - Vector index loaded from Cloudinary successfully.
+2025-07-26 10:17:46,826 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
