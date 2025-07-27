@@ -1,16 +1,15 @@
 import os
 import json
 import requests
-import numpy as np
 import base64
+import gzip
+import shutil
 from dotenv import load_dotenv
 from typing import List
-from sentence_transformers import SentenceTransformer
-import faiss
-from langchain_core.documents import Document
-from logs.logging_config import logger
 import cloudinary
 import cloudinary.uploader
+from langchain_core.documents import Document
+from sentence_transformers import SentenceTransformer
 
 load_dotenv()
 
@@ -22,55 +21,57 @@ cloudinary.config(
 
 class LightweightVectorStore:
     def __init__(self):
-        self.model = SentenceTransformer("all-MiniLM-L6-v2")
+        self.model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
         self.documents = []
-        self.index = None
+        self.embeddings = []
 
     def from_documents(self, docs: List[Document]):
         self.documents = docs
         texts = [doc.page_content for doc in docs]
-        embeddings = self.model.encode(texts)
-        self.index = faiss.IndexFlatL2(embeddings.shape[1])
-        self.index.add(np.array(embeddings).astype('float32'))
+        raw_embeddings = self.model.encode(texts, normalize_embeddings=True)
+        self.embeddings = raw_embeddings.tolist()
         return self
 
     def similarity_search(self, query: str, k: int = 4):
-        if self.index is None:
+        if not self.embeddings:
             return []
-
-        query_embedding = self.model.encode([query]).astype('float32')
-        distances, indices = self.index.search(query_embedding, k)
-
+        query_emb = self.model.encode([query], normalize_embeddings=True)[0].tolist()
+        sims = [(sum(a * b for a, b in zip(query_emb, emb)), i) for i, emb in enumerate(self.embeddings)]
+        sims.sort(reverse=True, key=lambda x: x[0])
         results = []
-        for rank, idx in enumerate(indices[0]):
+        for score, idx in sims[:k]:
             if 0 <= idx < len(self.documents):
-                results.append(self.documents[idx])
-        
+                doc = self.documents[idx]
+                doc.metadata['similarity_score'] = float(score)
+                results.append(doc)
         return results
 
     def save_local(self, path: str):
         os.makedirs(path, exist_ok=True)
-        faiss.write_index(self.index, f"{path}/index.faiss")
-        docs_data = [{"page_content": doc.page_content, "metadata": doc.metadata} for doc in self.documents]
+        with open(f"{path}/embeddings.json", 'w') as f:
+            json.dump(self.embeddings, f)
         with open(f"{path}/documents.json", 'w') as f:
-            json.dump(docs_data, f)
+            json.dump(
+                [{"page_content": doc.page_content, "metadata": doc.metadata} for doc in self.documents], f
+            )
 
     def load_local(self, path: str):
-        self.index = faiss.read_index(f"{path}/index.faiss")
+        with open(f"{path}/embeddings.json", 'r') as f:
+            self.embeddings = json.load(f)
         with open(f"{path}/documents.json", 'r') as f:
-            docs_data = json.load(f)
-        self.documents = [Document(page_content=doc["page_content"], metadata=doc["metadata"]) for doc in docs_data]
+            data = json.load(f)
+        self.documents = [Document(page_content=d["page_content"], metadata=d["metadata"]) for d in data]
         return self
 
-vector_store = LightweightVectorStore()
+try:
+    vector_store = LightweightVectorStore()
+except Exception:
+    vector_store = None
 
 def store(docs: List[Document]):
-    try:
+    if vector_store:
         vector_store.from_documents(docs)
         vector_store.save_local("lightweight_index")
-        logger.debug("Documents saved to Vectorstore successfully.")
-    except Exception as e:
-        logger.error(f"Failed to store documents in Vectorstore: {e}")
 
 cloudinary_urls = {}
 
@@ -89,76 +90,77 @@ def _save_urls():
 
 cloudinary_urls = _load_urls()
 
-def store_to_cloudinary(docs: List[Document], index_name: str = "lightweight_index"):
-    try:
-        vector_store.from_documents(docs)
-        vector_store.save_local(index_name)
+def store_to_cloudinary(docs: List[Document], index_name: str = "lightweight_index", compress: bool = False):
+    if not vector_store:
+        return None
 
-        with open(f"{index_name}/index.faiss", "rb") as f:
-            index_data = base64.b64encode(f.read()).decode()
+    vector_store.from_documents(docs)
+    vector_store.save_local(index_name)
 
-        docs_data = json.dumps([
-            {"page_content": doc.page_content, "metadata": doc.metadata}
-            for doc in docs
-        ])
+    with open(f"{index_name}/embeddings.json", "rb") as f:
+        embeddings_data = base64.b64encode(f.read()).decode()
 
-        json_data = json.dumps({
-            'index': index_data,
-            'documents': docs_data
-        })
+    docs_data = json.dumps([{"page_content": doc.page_content, "metadata": doc.metadata} for doc in docs])
 
-        base64_data = base64.b64encode(json_data.encode()).decode()
+    if compress:
+        combined_data = json.dumps({'embeddings': embeddings_data, 'documents': docs_data}, separators=(',', ':'))
+        compressed_data = gzip.compress(combined_data.encode())
+        base64_data = base64.b64encode(compressed_data).decode()
+        data_uri = f"data:application/octet-stream;base64,{base64_data}"
+    else:
+        combined_data = json.dumps({'embeddings': embeddings_data, 'documents': docs_data})
+        base64_data = base64.b64encode(combined_data.encode()).decode()
         data_uri = f"data:application/json;base64,{base64_data}"
 
-        response = cloudinary.uploader.upload_large(
-            data_uri,
-            resource_type="raw",
-            public_id=f"vector_indices/{index_name}",
-            overwrite=True
-        )
+    response = cloudinary.uploader.upload_large(
+        data_uri,
+        resource_type="raw",
+        public_id=f"vector_indices/{index_name}",
+        overwrite=True
+    )
 
-        cloudinary_urls[index_name] = response['secure_url']
-        _save_urls()
+    cloudinary_urls[index_name] = response['secure_url']
+    _save_urls()
 
-        logger.info(f"Vector index uploaded to Cloudinary: {response['secure_url']}")
-        return response['secure_url']
+    if os.path.exists(index_name):
+        shutil.rmtree(index_name)
 
-    except Exception as e:
-        logger.error(f"Failed to store vector index to Cloudinary: {e}")
+    return response['secure_url']
 
 def load_from_cloudinary(index_name: str = "lightweight_index"):
+    index_name = index_name.replace('.zip', '')
+    if index_name not in cloudinary_urls:
+        raise Exception(f"Index '{index_name}' not found in cached URLs.")
+
+    url = cloudinary_urls[index_name]
+    response = requests.get(url)
+    if response.status_code != 200:
+        raise Exception(f"Failed to fetch index from Cloudinary")
+
     try:
-        index_name = index_name.replace('.zip', '')
-        if index_name not in cloudinary_urls:
-            raise Exception(f"Index '{index_name}' not found. Upload first or check index name.")
-        
-        url = cloudinary_urls[index_name]
-        response = requests.get(url)
-
-        if response.status_code == 200:
+        compressed_data = base64.b64decode(response.content)
+        decompressed_data = gzip.decompress(compressed_data).decode()
+        data = json.loads(decompressed_data)
+    except:
+        try:
             data = json.loads(response.text)
+        except:
+            decoded_data = base64.b64decode(response.content).decode()
+            data = json.loads(decoded_data)
 
-            if 'index' not in data or 'documents' not in data:
-                raise Exception("Cloudinary data format is incorrect.")
+    if 'embeddings' not in data or 'documents' not in data:
+        raise Exception("Invalid format in downloaded index.")
 
-            index_binary = base64.b64decode(data['index'])
-            docs_json = json.loads(data['documents'])
+    os.makedirs(index_name, exist_ok=True)
 
-            os.makedirs(index_name, exist_ok=True)
-            with open(f"{index_name}/index.faiss", "wb") as f:
-                f.write(index_binary)
+    with open(f"{index_name}/embeddings.json", "wb") as f:
+        f.write(base64.b64decode(data['embeddings']))
+    with open(f"{index_name}/documents.json", "w") as f:
+        json.dump(json.loads(data['documents']), f)
 
-            with open(f"{index_name}/documents.json", "w") as f:
-                json.dump(docs_json, f)
+    loaded_store = LightweightVectorStore().load_local(index_name)
 
-            loaded_store = LightweightVectorStore()
-            loaded_store.load_local(index_name)
-            logger.info("Vector index loaded from Cloudinary successfully.")
-            return loaded_store
+    if os.path.exists(index_name):
+        shutil.rmtree(index_name)
 
-        else:
-            raise Exception(f"HTTP {response.status_code}: {response.text}")
-
-    except Exception as e:
-        logger.error(f"Failed to load vector index from Cloudinary: {e}")
-        raise
+    return loaded_store

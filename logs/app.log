@@ -1290,3 +1290,65 @@ For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/er
 2025-07-26 10:17:40,995 - INFO - Vector index loaded from Cloudinary successfully.
 2025-07-26 10:17:45,012 - INFO - Vector index loaded from Cloudinary successfully.
 2025-07-26 10:17:46,826 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-27 01:29:10,590 - DEBUG - question created successfully.!!
+2025-07-27 01:29:16,621 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 01:29:17,954 - ERROR - Semantic search failed: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-68853395-3301d0637a2e3cb8180d946e;1f2ec35b-292f-43f8-b45c-0b7024058a96)
+
+Invalid credentials in Authorization header
+2025-07-27 01:29:19,603 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-27 01:31:58,314 - DEBUG - question created successfully.!!
+2025-07-27 01:32:03,027 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 01:32:04,145 - ERROR - Semantic search failed: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-6885343c-4e51034947175324007e024b;0147da2f-b340-4a5e-b54a-73fe3efbea85)
+
+Invalid credentials in Authorization header
+2025-07-27 01:32:05,035 - ERROR - Error in generating RAG answer: Invalid json output: I'm happy to help! However, I notice that the policy document is missing, which is essential for making a decision on the medical claim. Without the policy document, I cannot assess the coverage, exclusions, and financial evaluation of the claim.
+
+Could you please provide the policy document or a detailed summary of the policy terms and conditions? This will enable me to analyze the claim and provide a structured decision in the required JSON format.
+
+If you have any questions or need further clarification, please feel free to ask!
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
+2025-07-27 01:37:57,437 - DEBUG - question created successfully.!!
+2025-07-27 01:37:59,822 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 01:38:01,438 - ERROR - Error in generating RAG answer: Invalid Cloudinary index format
+2025-07-27 01:40:46,653 - DEBUG - question created successfully.!!
+2025-07-27 01:40:48,684 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 01:40:49,859 - ERROR - Semantic search failed: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-68853649-621337264436901b6c328605;eb7ccddc-e3ae-4643-92c7-9be6cdce3cf2)
+
+Invalid credentials in Authorization header
+2025-07-27 01:40:50,890 - ERROR - Error in generating RAG answer: Invalid json output: I'm happy to help! However, I notice that the policy document is empty, and there is no policy text to reference. Additionally, the policyholder details are missing, including age, location, and policy tenure.
+
+As a Medical Insurance Claims Analyst, I cannot proceed with the analysis without a valid policy document and policyholder details. Could you please provide the necessary information so I can assist you with the claim assessment?
+
+Once I receive the complete information, I'll be happy to provide a well-formatted JSON instance that conforms to the provided schema, including the decision, approved amount, and justification for the claim.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
+2025-07-27 01:42:49,078 - DEBUG - question created successfully.!!
+2025-07-27 01:42:51,372 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 01:42:51,687 - ERROR - Error in generating RAG answer: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-688536c3-78b75113460cf06226aa0911;8ba4c90d-bb7c-420c-bcaf-1d2c1b7ace00)
+
+Invalid credentials in Authorization header
+2025-07-27 01:44:39,377 - DEBUG - question created successfully.!!
+2025-07-27 01:44:44,712 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 01:44:45,068 - ERROR - Error in generating RAG answer: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-68853735-12d663c93430b30b56cedfe3;25d3d6ae-ae58-4444-8ca6-1636eca7ff3b)
+
+Invalid credentials in Authorization header
+2025-07-27 11:28:43,519 - DEBUG - question created successfully.!!
+2025-07-27 11:28:48,512 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 11:28:48,966 - ERROR - Error in generating RAG answer: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-6885c018-6be61a4939fd85540fbbc396;87229d09-67a5-4c09-8aa7-b5350fd298b4)
+
+Invalid credentials in Authorization header
+2025-07-27 11:31:25,961 - DEBUG - question created successfully.!!
+2025-07-27 11:31:28,178 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 11:31:28,610 - ERROR - Error in generating RAG answer: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-6885c0b8-3a400ee83b08c67624e8616f;0f50f7d1-a462-4351-ad7d-ce2e6bb54cc0)
+
+Invalid credentials in Authorization header
+2025-07-27 11:32:09,570 - DEBUG - question created successfully.!!
+2025-07-27 11:32:12,098 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 11:32:12,427 - ERROR - Error in generating RAG answer: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping (Request ID: Root=1-6885c0e4-26b18ef17bc373db5212c83a;0cd196e0-3f21-4f86-8271-e07a479acd4c)
+
+Invalid credentials in Authorization header
+2025-07-27 12:32:28,162 - DEBUG - question created successfully.!!
+2025-07-27 12:32:31,316 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 12:32:57,052 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-27 12:35:43,899 - DEBUG - question created successfully.!!
+2025-07-27 12:35:49,151 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 12:36:13,958 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
