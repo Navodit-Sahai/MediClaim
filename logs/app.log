@@ -1352,3 +1352,75 @@ Invalid credentials in Authorization header
 2025-07-27 12:35:43,899 - DEBUG - question created successfully.!!
 2025-07-27 12:35:49,151 - DEBUG - Text splitted successfully with line numbers!
 2025-07-27 12:36:13,958 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-27 13:54:24,147 - DEBUG - question created successfully.!!
+2025-07-27 13:54:28,677 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 13:54:29,051 - ERROR - Error in generating RAG answer: Failed to store to Cloudinary: Failed to generate embeddings: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/BAAI/bge-small-en-v1.5?expand=inferenceProviderMapping (Request ID: Root=1-6885e23c-7836859e510fde5d48697932;4d9e102b-99c4-4064-8434-7966e18b33e5)
+
+Invalid credentials in Authorization header
+2025-07-27 14:02:28,976 - DEBUG - question created successfully.!!
+2025-07-27 14:02:32,756 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 14:02:33,139 - ERROR - Error in generating RAG answer: Failed to store to Cloudinary: Failed to generate embeddings: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/BAAI/bge-small-en-v1.5?expand=inferenceProviderMapping (Request ID: Root=1-6885e420-62c471b57e856149763e1e0d;77044804-d615-4433-936b-d6dc9a1714f7)
+
+Invalid credentials in Authorization header
+2025-07-27 14:05:39,099 - DEBUG - question created successfully.!!
+2025-07-27 14:05:42,754 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 14:05:43,602 - ERROR - Error in generating RAG answer: Failed to store to Cloudinary: Failed to generate embeddings: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/BAAI/bge-small-en-v1.5?expand=inferenceProviderMapping (Request ID: Root=1-6885e4df-21ce11570cceb6160099758f;55577acc-442f-4e75-835e-c732e8d54c3f)
+
+Invalid credentials in Authorization header
+2025-07-27 14:25:05,234 - DEBUG - question created successfully.!!
+2025-07-27 14:25:07,994 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 14:25:08,385 - ERROR - Error in generating RAG answer: Failed to store to Cloudinary: Failed to generate embeddings: 401 Client Error: Unauthorized for url: https://huggingface.co/api/models/BAAI/bge-small-en-v1.5?expand=inferenceProviderMapping (Request ID: Root=1-6885e96c-62daedb06911d080429d884b;72f989fa-be40-492a-a002-0d548fd448d4)
+
+Invalid credentials in Authorization header
+2025-07-27 23:26:24,608 - DEBUG - question created successfully.!!
+2025-07-27 23:26:30,572 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 23:26:32,251 - ERROR - Error in generating RAG answer: Failed to store to Cloudinary: Failed to generate embeddings: (Request ID: Root=1-68866850-56f98d5c794501f9707eb8d9;0b1abaa1-3dff-4e88-9365-9410f36d0960)
+
+403 Forbidden: This authentication method does not have sufficient permissions to call Inference Providers on behalf of user navsahai.
+Cannot access content at: https://router.huggingface.co/hf-inference/models/BAAI/bge-small-en-v1.5/pipeline/feature-extraction.
+Make sure your token has the correct permissions.
+2025-07-27 23:48:39,864 - DEBUG - question created successfully.!!
+2025-07-27 23:48:42,893 - DEBUG - Text splitted successfully with line numbers!
+2025-07-27 23:48:44,870 - ERROR - Error in generating RAG answer: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'content-type': 'text/plain; charset=utf-8', 'access-control-allow-origin': '*', 'vary': 'origin,access-control-request-method,access-control-request-headers', 'access-control-expose-headers': '*', 'x-pinecone-api-version': '2025-04', 'x-cloud-trace-context': '07a11969e1e7d58d30656aa243a6a82c', 'date': 'Sun, 27 Jul 2025 18:18:44 GMT', 'server': 'Google Frontend', 'Content-Length': '125', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'})
+HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must consist of lower case alphanumeric characters or '-'"},"status":400}
+
+2025-07-28 12:18:32,028 - DEBUG - question created successfully.!!
+2025-07-28 12:18:35,158 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 12:20:26,302 - DEBUG - question created successfully.!!
+2025-07-28 12:20:26,302 - DEBUG - Starting RAG agent...
+2025-07-28 12:20:26,305 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpe8itn2by.pdf
+2025-07-28 12:20:28,565 - DEBUG - Data loaded successfully
+2025-07-28 12:20:28,565 - DEBUG - Splitting text into chunks...
+2025-07-28 12:20:28,569 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 12:20:28,569 - DEBUG - Text split into 388 chunks
+2025-07-28 12:20:28,569 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 12:20:44,519 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 12:20:44,519 - DEBUG - Loading from Pinecone...
+2025-07-28 12:20:45,725 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 12:20:45,725 - DEBUG - Performing semantic search...
+2025-07-28 12:20:47,808 - DEBUG - Search completed. Content length: 2824
+2025-07-28 12:20:47,808 - DEBUG - Creating prompt template...
+2025-07-28 12:20:47,808 - DEBUG - Creating prompt and chain...
+2025-07-28 12:20:47,810 - DEBUG - Invoking LLM chain...
+2025-07-28 12:20:49,412 - DEBUG - LLM response generated successfully
+2025-07-28 12:20:49,412 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 12:22:06,340 - DEBUG - question created successfully.!!
+2025-07-28 12:22:06,340 - DEBUG - Starting RAG agent...
+2025-07-28 12:22:06,340 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpd7ball5o.pdf
+2025-07-28 12:22:12,133 - DEBUG - Data loaded successfully
+2025-07-28 12:22:12,133 - DEBUG - Splitting text into chunks...
+2025-07-28 12:22:12,138 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 12:22:12,138 - DEBUG - Text split into 388 chunks
+2025-07-28 12:22:12,138 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 12:22:28,319 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 12:22:28,319 - DEBUG - Loading from Pinecone...
+2025-07-28 12:22:29,115 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 12:22:29,117 - DEBUG - Performing semantic search...
+2025-07-28 12:22:31,207 - DEBUG - Search completed. Content length: 2841
+2025-07-28 12:22:31,207 - DEBUG - Creating prompt template...
+2025-07-28 12:22:31,207 - DEBUG - Creating prompt and chain...
+2025-07-28 12:22:31,207 - DEBUG - Invoking LLM chain...
+2025-07-28 12:22:32,457 - DEBUG - LLM response generated successfully
+2025-07-28 12:22:32,457 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!

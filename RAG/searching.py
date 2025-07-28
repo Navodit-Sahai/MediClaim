@@ -1,31 +1,31 @@
 from logs.logging_config import logger
-from RAG.database import load_from_cloudinary
+from RAG.database import load_from_pinecone
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
 
-def load_vectorstore(save_path="lightweight_index.zip", from_cloudinary=False):
+def load_vectorstore(save_path="lightweight-index", from_pinecone=False):
     try:
-        if from_cloudinary:
-            return load_from_cloudinary(save_path)
+        if from_pinecone:
+            return load_from_pinecone(save_path)
         else:
             from RAG.database import vector_store
             try:
                 vector_store.load_local(save_path)
                 return vector_store
             except:
-                logger.warning(f"Local vectorstore '{save_path}' not found, trying cloudinary...")
-                return load_from_cloudinary(save_path)
+                logger.warning(f"Local vectorstore '{save_path}' not found, trying pinecone...")
+                return load_from_pinecone(save_path)
     except Exception as e:
         logger.error(f"Failed to load Vectorstore: {e}")
         return None
 
 
-def semantic_search(query, top_k=5, use_cloudinary=False):
+def semantic_search(query, top_k=5, use_pinecone=False):
     try:
-        vectorstore = load_vectorstore(from_cloudinary=use_cloudinary)
+        vectorstore = load_vectorstore(from_pinecone=use_pinecone)
         if not vectorstore:
             return "Vectorstore not available.", []
 

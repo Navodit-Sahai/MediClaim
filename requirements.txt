@@ -3,13 +3,12 @@ langchain-groq
 langchain_community
 langgraph
 uvicorn[standard]
-cloudinary
-numpy
 pydantic
 python-dotenv
 requests
 python-multipart
 pypdf
 langchain-core>=0.1.0
-sentence-transformers
+sentence-transformers==2.2.2
 scikit-learn
+pinecone
