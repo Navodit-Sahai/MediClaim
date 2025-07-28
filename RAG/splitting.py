@@ -4,7 +4,7 @@ from langchain_core.documents import Document
 
 def split_text(text: str):
     try:
-        splitter = RecursiveCharacterTextSplitter(chunk_size=600, chunk_overlap=100)
+        splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=250)
         chunks = splitter.split_text(text)
 
         docs = [

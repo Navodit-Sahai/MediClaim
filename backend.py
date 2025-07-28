@@ -31,7 +31,7 @@ def health_check():
     return {"status": "healthy"}
 
 def process_request(input_text: str, file: UploadFile):
-    with tempfile.NamedTemporaryFile(delete=True, suffix=".pdf") as temp_file:
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
         content = file.file.read()
         temp_file.write(content)
         temp_file.flush()

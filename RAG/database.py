@@ -3,11 +3,15 @@ from typing import List
 from dotenv import load_dotenv
 from pinecone import Pinecone, ServerlessSpec
 from langchain_core.documents import Document
-from sentence_transformers import SentenceTransformer
+import google.generativeai as genai
+import time
 
 load_dotenv()
 
-embeddings_model = SentenceTransformer('BAAI/bge-small-en-v1.5')
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=GOOGLE_API_KEY)
+
+embedding_model = genai.embed_content
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
 class LightweightVectorStore:
@@ -18,18 +22,48 @@ class LightweightVectorStore:
         if self.index_name not in pc.list_indexes().names():
             pc.create_index(
                 name=self.index_name,
-                dimension=384,
+                dimension=768,
                 metric='cosine',
                 spec=ServerlessSpec(cloud='aws', region='us-east-1')
             )
         self.index = pc.Index(self.index_name)
 
+    def embed_batch(self, texts_batch):
+        embeddings = []
+        for text in texts_batch:
+            try:
+                result = embedding_model(
+                    model="models/text-embedding-004",
+                    content=text,
+                    task_type="retrieval_document"
+                )
+                embeddings.append(result["embedding"])
+            except Exception as e:
+                print(f"Embedding failed for text, using fallback: {str(e)[:50]}")
+                embeddings.append([0.0] * 768)
+        return embeddings
+
+    def embed_texts(self, texts: List[str]):
+        batch_size = 15
+        all_embeddings = []
+        
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i:i+batch_size]
+            batch_embeddings = self.embed_batch(batch)
+            all_embeddings.extend(batch_embeddings)
+            print(f"Processed {i+len(batch)}/{len(texts)} embeddings")
+            time.sleep(0.5)
+        
+        return all_embeddings
+
     def from_documents(self, docs: List[Document]):
         if not docs:
             return self
+
         self.documents = docs
         texts = [doc.page_content for doc in docs]
-        self.embeddings = embeddings_model.encode(texts).tolist()
+        self.embeddings = self.embed_texts(texts)
+
         vectors = [
             {
                 'id': f'doc_{i}',
@@ -41,11 +75,18 @@ class LightweightVectorStore:
             }
             for i, (doc, emb) in enumerate(zip(docs, self.embeddings))
         ]
-        self.index.upsert(vectors)
+
+        def batch(lst, batch_size=200):
+            for i in range(0, len(lst), batch_size):
+                yield lst[i:i + batch_size]
+
+        for chunk in batch(vectors):
+            self.index.upsert(chunk)
+
         return self
 
     def similarity_search(self, query: str, k: int = 4):
-        query_emb = embeddings_model.encode([query])[0].tolist()
+        query_emb = self.embed_texts([query])[0]
         results = self.index.query(vector=query_emb, top_k=k, include_metadata=True)
         return [
             Document(

@@ -1424,3 +1424,464 @@ HTTP response body: {"error":{"code":"INVALID_ARGUMENT","message":"Name must con
 2025-07-28 12:22:31,207 - DEBUG - Invoking LLM chain...
 2025-07-28 12:22:32,457 - DEBUG - LLM response generated successfully
 2025-07-28 12:22:32,457 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 22:05:35,222 - DEBUG - question created successfully.!!
+2025-07-28 22:05:35,238 - DEBUG - Starting RAG agent...
+2025-07-28 22:05:35,239 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpfr6pygni.pdf
+2025-07-28 22:05:35,239 - ERROR - Load error: C:/Users/sahai/AppData/Local/Temp/tmpfr6pygni.pdf | [Errno 13] Permission denied: 'C:/Users/sahai/AppData/Local/Temp/tmpfr6pygni.pdf'
+2025-07-28 22:05:35,240 - ERROR - Error in generating RAG answer: [Errno 13] Permission denied: 'C:/Users/sahai/AppData/Local/Temp/tmpfr6pygni.pdf'
+2025-07-28 22:05:35,240 - ERROR - Exception type: PermissionError
+2025-07-28 22:05:35,240 - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\agents\rag_reflector.py", line 25, in rag_agent
+    text = load_data(file_path=file_path)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\load_text.py", line 66, in load_data
+    with open(file_path, 'rb') as f:
+PermissionError: [Errno 13] Permission denied: 'C:/Users/sahai/AppData/Local/Temp/tmpfr6pygni.pdf'
+
+2025-07-28 22:08:29,720 - DEBUG - question created successfully.!!
+2025-07-28 22:08:29,720 - DEBUG - Starting RAG agent...
+2025-07-28 22:08:29,720 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpz4q7pwif.pdf
+2025-07-28 22:08:32,619 - DEBUG - Data loaded successfully
+2025-07-28 22:08:32,619 - DEBUG - Splitting text into chunks...
+2025-07-28 22:08:32,619 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:08:32,619 - DEBUG - Text split into 388 chunks
+2025-07-28 22:08:32,619 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:08:52,138 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 22:08:52,138 - DEBUG - Loading from Pinecone...
+2025-07-28 22:08:53,365 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 22:08:53,365 - DEBUG - Performing semantic search...
+2025-07-28 22:08:56,339 - DEBUG - Search completed. Content length: 2824
+2025-07-28 22:08:56,339 - DEBUG - Creating prompt template...
+2025-07-28 22:08:56,339 - DEBUG - Creating prompt and chain...
+2025-07-28 22:08:56,341 - DEBUG - Invoking LLM chain...
+2025-07-28 22:08:58,001 - DEBUG - LLM response generated successfully
+2025-07-28 22:08:58,001 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 22:10:55,944 - DEBUG - question created successfully.!!
+2025-07-28 22:10:55,944 - DEBUG - Starting RAG agent...
+2025-07-28 22:10:55,944 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpsxho4b44.pdf
+2025-07-28 22:10:58,541 - DEBUG - Data loaded successfully
+2025-07-28 22:10:58,541 - DEBUG - Splitting text into chunks...
+2025-07-28 22:10:58,541 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:10:58,541 - DEBUG - Text split into 388 chunks
+2025-07-28 22:10:58,541 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:11:12,315 - ERROR - Failed to store to Pinecone: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-07-28 22:11:12,315 - ERROR - Error in generating RAG answer: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-07-28 22:11:12,315 - ERROR - Exception type: DefaultCredentialsError
+2025-07-28 22:11:12,343 - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\agents\rag_reflector.py", line 35, in rag_agent
+    result = store_to_pinecone(chunks, index_name="lightweight_index")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 81, in store_to_pinecone
+    return store(docs, index_name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 73, in store
+    return LightweightVectorStore(index_name).from_documents(docs) and {
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 46, in from_documents
+    self.embeddings = self.embed_texts(texts)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 32, in embed_texts
+    return [
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 33, in <listcomp>
+    embedding_model(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\embedding.py", line 169, in embed_content
+    client = get_default_generative_client()
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 360, in get_default_generative_client
+    return _client_manager.get_default_client("generative")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 289, in get_default_client
+    client = self.make_client(name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 249, in make_client
+    raise e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 241, in make_client
+    client = cls(**self.client_config)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 667, in __init__
+    self._transport = transport_init(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 235, in __init__
+    super().__init__(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\base.py", line 100, in __init__
+    credentials, _ = google.auth.default(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\auth\_default.py", line 685, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+
+2025-07-28 22:11:32,908 - DEBUG - question created successfully.!!
+2025-07-28 22:11:32,908 - DEBUG - Starting RAG agent...
+2025-07-28 22:11:32,908 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpthgukl_t.pdf
+2025-07-28 22:11:35,158 - DEBUG - Data loaded successfully
+2025-07-28 22:11:35,158 - DEBUG - Splitting text into chunks...
+2025-07-28 22:11:35,160 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:11:35,169 - DEBUG - Text split into 388 chunks
+2025-07-28 22:11:35,169 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:11:48,571 - ERROR - Failed to store to Pinecone: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-07-28 22:11:48,574 - ERROR - Error in generating RAG answer: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-07-28 22:11:48,574 - ERROR - Exception type: DefaultCredentialsError
+2025-07-28 22:11:48,576 - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\agents\rag_reflector.py", line 35, in rag_agent
+    result = store_to_pinecone(chunks, index_name="lightweight_index")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 81, in store_to_pinecone
+    return store(docs, index_name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 73, in store
+    return LightweightVectorStore(index_name).from_documents(docs) and {
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 46, in from_documents
+    self.embeddings = self.embed_texts(texts)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 32, in embed_texts
+    return [
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 33, in <listcomp>
+    embedding_model(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\embedding.py", line 169, in embed_content
+    client = get_default_generative_client()
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 360, in get_default_generative_client
+    return _client_manager.get_default_client("generative")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 289, in get_default_client
+    client = self.make_client(name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 249, in make_client
+    raise e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\generativeai\client.py", line 241, in make_client
+    client = cls(**self.client_config)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 667, in __init__
+    self._transport = transport_init(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\grpc.py", line 235, in __init__
+    super().__init__(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\transports\base.py", line 100, in __init__
+    credentials, _ = google.auth.default(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\google\auth\_default.py", line 685, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+
+2025-07-28 22:12:16,437 - DEBUG - question created successfully.!!
+2025-07-28 22:12:16,438 - DEBUG - Starting RAG agent...
+2025-07-28 22:12:16,438 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmplkcls9fr.pdf
+2025-07-28 22:12:19,155 - DEBUG - Data loaded successfully
+2025-07-28 22:12:19,172 - DEBUG - Splitting text into chunks...
+2025-07-28 22:12:19,178 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:12:19,178 - DEBUG - Text split into 388 chunks
+2025-07-28 22:12:19,178 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:16:28,415 - ERROR - Failed to store to Pinecone: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:46:28 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '3466', 'x-pinecone-request-id': '1128926849398012355', 'x-envoy-upstream-service-time': '60', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+2025-07-28 22:16:28,415 - ERROR - Error in generating RAG answer: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:46:28 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '3466', 'x-pinecone-request-id': '1128926849398012355', 'x-envoy-upstream-service-time': '60', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+2025-07-28 22:16:28,415 - ERROR - Exception type: PineconeApiException
+2025-07-28 22:16:28,500 - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\agents\rag_reflector.py", line 35, in rag_agent
+    result = store_to_pinecone(chunks, index_name="lightweight_index")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 81, in store_to_pinecone
+    return store(docs, index_name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 73, in store
+    return LightweightVectorStore(index_name).from_documents(docs) and {
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 58, in from_documents
+    self.index.upsert(vectors)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\utils\error_handling.py", line 30, in inner_func
+    raise e from e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\utils\error_handling.py", line 15, in inner_func
+    return func(*args, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\db_data\index.py", line 212, in upsert
+    return self._upsert_batch(vectors, namespace, _check_type, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\db_data\index.py", line 238, in _upsert_batch
+    return self._vector_api.upsert_vectors(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\endpoint.py", line 102, in __call__
+    return self.callable(self, *args, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\core\openapi\db_data\api\vector_operations_api.py", line 675, in __upsert_vectors
+    return self.call_with_http_info(**kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\endpoint.py", line 134, in call_with_http_info
+    return self.api_client.call_api(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 306, in call_api
+    return self.__call_api(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 182, in __call_api
+    raise e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 170, in __call_api
+    response_data = self.request(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 386, in request
+    return self.rest_client.POST(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_utils.py", line 146, in POST
+    return self.request(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_urllib3.py", line 267, in request
+    return raise_exceptions_or_return(r)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_utils.py", line 49, in raise_exceptions_or_return
+    raise PineconeApiException(http_resp=r)
+pinecone.exceptions.exceptions.PineconeApiException: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:46:28 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '3466', 'x-pinecone-request-id': '1128926849398012355', 'x-envoy-upstream-service-time': '60', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+
+2025-07-28 22:16:52,699 - DEBUG - question created successfully.!!
+2025-07-28 22:16:52,699 - DEBUG - Starting RAG agent...
+2025-07-28 22:16:52,699 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpnnnvs_ih.pdf
+2025-07-28 22:16:55,242 - DEBUG - Data loaded successfully
+2025-07-28 22:16:55,242 - DEBUG - Splitting text into chunks...
+2025-07-28 22:16:55,258 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:16:55,258 - DEBUG - Text split into 388 chunks
+2025-07-28 22:16:55,258 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:21:03,760 - ERROR - Failed to store to Pinecone: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:51:03 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '3226', 'x-pinecone-request-id': '4839559444851259692', 'x-envoy-upstream-service-time': '45', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+2025-07-28 22:21:03,760 - ERROR - Error in generating RAG answer: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:51:03 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '3226', 'x-pinecone-request-id': '4839559444851259692', 'x-envoy-upstream-service-time': '45', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+2025-07-28 22:21:03,760 - ERROR - Exception type: PineconeApiException
+2025-07-28 22:21:03,770 - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\agents\rag_reflector.py", line 35, in rag_agent
+    result = store_to_pinecone(chunks, index_name="lightweight_index")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 81, in store_to_pinecone
+    return store(docs, index_name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 73, in store
+    return LightweightVectorStore(index_name).from_documents(docs) and {
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 58, in from_documents
+    self.index.upsert(vectors)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\utils\error_handling.py", line 30, in inner_func
+    raise e from e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\utils\error_handling.py", line 15, in inner_func
+    return func(*args, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\db_data\index.py", line 212, in upsert
+    return self._upsert_batch(vectors, namespace, _check_type, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\db_data\index.py", line 238, in _upsert_batch
+    return self._vector_api.upsert_vectors(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\endpoint.py", line 102, in __call__
+    return self.callable(self, *args, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\core\openapi\db_data\api\vector_operations_api.py", line 675, in __upsert_vectors
+    return self.call_with_http_info(**kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\endpoint.py", line 134, in call_with_http_info
+    return self.api_client.call_api(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 306, in call_api
+    return self.__call_api(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 182, in __call_api
+    raise e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 170, in __call_api
+    response_data = self.request(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 386, in request
+    return self.rest_client.POST(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_utils.py", line 146, in POST
+    return self.request(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_urllib3.py", line 267, in request
+    return raise_exceptions_or_return(r)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_utils.py", line 49, in raise_exceptions_or_return
+    raise PineconeApiException(http_resp=r)
+pinecone.exceptions.exceptions.PineconeApiException: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:51:03 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '3226', 'x-pinecone-request-id': '4839559444851259692', 'x-envoy-upstream-service-time': '45', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+
+2025-07-28 22:23:57,541 - DEBUG - question created successfully.!!
+2025-07-28 22:23:57,541 - DEBUG - Starting RAG agent...
+2025-07-28 22:23:57,541 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpdy7ah_2b.pdf
+2025-07-28 22:23:59,582 - DEBUG - Data loaded successfully
+2025-07-28 22:23:59,582 - DEBUG - Splitting text into chunks...
+2025-07-28 22:23:59,588 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:23:59,588 - DEBUG - Text split into 388 chunks
+2025-07-28 22:23:59,588 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:28:11,283 - ERROR - Failed to store to Pinecone: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:58:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '2927', 'x-pinecone-request-id': '5113162422690421985', 'x-envoy-upstream-service-time': '44', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+2025-07-28 22:28:11,283 - ERROR - Error in generating RAG answer: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:58:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '2927', 'x-pinecone-request-id': '5113162422690421985', 'x-envoy-upstream-service-time': '44', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+2025-07-28 22:28:11,283 - ERROR - Exception type: PineconeApiException
+2025-07-28 22:28:11,299 - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\agents\rag_reflector.py", line 35, in rag_agent
+    result = store_to_pinecone(chunks, index_name="lightweight_index")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 81, in store_to_pinecone
+    return store(docs, index_name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 73, in store
+    return LightweightVectorStore(index_name).from_documents(docs) and {
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 58, in from_documents
+    self.index.upsert(vectors)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\utils\error_handling.py", line 30, in inner_func
+    raise e from e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\utils\error_handling.py", line 15, in inner_func
+    return func(*args, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\db_data\index.py", line 212, in upsert
+    return self._upsert_batch(vectors, namespace, _check_type, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\db_data\index.py", line 238, in _upsert_batch
+    return self._vector_api.upsert_vectors(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\endpoint.py", line 102, in __call__
+    return self.callable(self, *args, **kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\core\openapi\db_data\api\vector_operations_api.py", line 675, in __upsert_vectors
+    return self.call_with_http_info(**kwargs)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\endpoint.py", line 134, in call_with_http_info
+    return self.api_client.call_api(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 306, in call_api
+    return self.__call_api(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 182, in __call_api
+    raise e
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 170, in __call_api
+    response_data = self.request(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\api_client.py", line 386, in request
+    return self.rest_client.POST(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_utils.py", line 146, in POST
+    return self.request(
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_urllib3.py", line 267, in request
+    return raise_exceptions_or_return(r)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\hackenv\lib\site-packages\pinecone\openapi_support\rest_utils.py", line 49, in raise_exceptions_or_return
+    raise PineconeApiException(http_resp=r)
+pinecone.exceptions.exceptions.PineconeApiException: (400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Date': 'Mon, 28 Jul 2025 16:58:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '102', 'Connection': 'keep-alive', 'x-pinecone-request-latency-ms': '2927', 'x-pinecone-request-id': '5113162422690421985', 'x-envoy-upstream-service-time': '44', 'server': 'envoy'})
+HTTP response body: {"code":3,"message":"Vector dimension 768 does not match the dimension of the index 384","details":[]}
+
+
+2025-07-28 22:31:28,311 - DEBUG - question created successfully.!!
+2025-07-28 22:31:28,311 - DEBUG - Starting RAG agent...
+2025-07-28 22:31:28,311 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpbe2dg6wf.pdf
+2025-07-28 22:31:30,579 - DEBUG - Data loaded successfully
+2025-07-28 22:31:30,579 - DEBUG - Splitting text into chunks...
+2025-07-28 22:31:30,582 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:31:30,582 - DEBUG - Text split into 388 chunks
+2025-07-28 22:31:30,582 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:35:36,635 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 22:35:36,635 - DEBUG - Loading from Pinecone...
+2025-07-28 22:35:37,840 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 22:35:37,840 - DEBUG - Performing semantic search...
+2025-07-28 22:35:40,918 - DEBUG - Search completed. Content length: 2750
+2025-07-28 22:35:40,920 - DEBUG - Creating prompt template...
+2025-07-28 22:35:40,920 - DEBUG - Creating prompt and chain...
+2025-07-28 22:35:40,924 - DEBUG - Invoking LLM chain...
+2025-07-28 22:35:42,400 - DEBUG - LLM response generated successfully
+2025-07-28 22:35:42,400 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 22:39:59,886 - DEBUG - question created successfully.!!
+2025-07-28 22:39:59,886 - DEBUG - Starting RAG agent...
+2025-07-28 22:39:59,886 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmp7fu1s1mv.pdf
+2025-07-28 22:40:01,935 - DEBUG - Data loaded successfully
+2025-07-28 22:40:01,935 - DEBUG - Splitting text into chunks...
+2025-07-28 22:40:01,935 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:40:01,935 - DEBUG - Text split into 388 chunks
+2025-07-28 22:40:01,935 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:44:08,298 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 22:44:08,298 - DEBUG - Loading from Pinecone...
+2025-07-28 22:44:09,423 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 22:44:09,423 - DEBUG - Performing semantic search...
+2025-07-28 22:44:12,293 - DEBUG - Search completed. Content length: 2750
+2025-07-28 22:44:12,293 - DEBUG - Creating prompt template...
+2025-07-28 22:44:12,293 - DEBUG - Creating prompt and chain...
+2025-07-28 22:44:12,294 - DEBUG - Invoking LLM chain...
+2025-07-28 22:44:13,737 - DEBUG - LLM response generated successfully
+2025-07-28 22:44:13,738 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 22:46:44,450 - DEBUG - question created successfully.!!
+2025-07-28 22:46:44,450 - DEBUG - Starting RAG agent...
+2025-07-28 22:46:44,450 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmp0eoa7fld.pdf
+2025-07-28 22:46:46,449 - DEBUG - Data loaded successfully
+2025-07-28 22:46:46,451 - DEBUG - Splitting text into chunks...
+2025-07-28 22:46:46,453 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:46:46,453 - DEBUG - Text split into 388 chunks
+2025-07-28 22:46:46,453 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:46:47,322 - ERROR - Failed to store to Pinecone: module 'google.generativeai' has no attribute 'batch_embed_contents'
+2025-07-28 22:46:47,322 - ERROR - Error in generating RAG answer: module 'google.generativeai' has no attribute 'batch_embed_contents'
+2025-07-28 22:46:47,322 - ERROR - Exception type: AttributeError
+2025-07-28 22:46:47,322 - ERROR - Full traceback: Traceback (most recent call last):
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\agents\rag_reflector.py", line 35, in rag_agent
+    result = store_to_pinecone(chunks, index_name="lightweight_index")
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 86, in store_to_pinecone
+    return store(docs, index_name)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 78, in store
+    return LightweightVectorStore(index_name).from_documents(docs) and {
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 47, in from_documents
+    self.embeddings = self.embed_texts(texts)
+  File "C:\Users\sahai\OneDrive\Desktop\hackathon\RAG\database.py", line 34, in embed_texts
+    responses = genai.batch_embed_contents(
+AttributeError: module 'google.generativeai' has no attribute 'batch_embed_contents'
+
+2025-07-28 22:48:47,824 - DEBUG - question created successfully.!!
+2025-07-28 22:48:47,824 - DEBUG - Starting RAG agent...
+2025-07-28 22:48:47,824 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpunz1rsb_.pdf
+2025-07-28 22:48:50,070 - DEBUG - Data loaded successfully
+2025-07-28 22:48:50,070 - DEBUG - Splitting text into chunks...
+2025-07-28 22:48:50,074 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:48:50,074 - DEBUG - Text split into 388 chunks
+2025-07-28 22:48:50,076 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 22:52:59,144 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 22:52:59,144 - DEBUG - Loading from Pinecone...
+2025-07-28 22:53:00,161 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 22:53:00,162 - DEBUG - Performing semantic search...
+2025-07-28 22:53:03,021 - DEBUG - Search completed. Content length: 2750
+2025-07-28 22:53:03,021 - DEBUG - Creating prompt template...
+2025-07-28 22:53:03,022 - DEBUG - Creating prompt and chain...
+2025-07-28 22:53:03,022 - DEBUG - Invoking LLM chain...
+2025-07-28 22:53:04,258 - DEBUG - LLM response generated successfully
+2025-07-28 22:53:04,259 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 22:56:31,411 - DEBUG - question created successfully.!!
+2025-07-28 22:56:31,411 - DEBUG - Starting RAG agent...
+2025-07-28 22:56:31,411 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpe5icqvz4.pdf
+2025-07-28 22:56:33,570 - DEBUG - Data loaded successfully
+2025-07-28 22:56:33,571 - DEBUG - Splitting text into chunks...
+2025-07-28 22:56:33,575 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 22:56:33,575 - DEBUG - Text split into 388 chunks
+2025-07-28 22:56:33,576 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 23:00:43,404 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 23:00:43,404 - DEBUG - Loading from Pinecone...
+2025-07-28 23:00:44,512 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 23:00:44,512 - DEBUG - Performing semantic search...
+2025-07-28 23:00:47,293 - DEBUG - Search completed. Content length: 2750
+2025-07-28 23:00:47,293 - DEBUG - Creating prompt template...
+2025-07-28 23:00:47,293 - DEBUG - Creating prompt and chain...
+2025-07-28 23:00:47,296 - DEBUG - Invoking LLM chain...
+2025-07-28 23:00:48,843 - DEBUG - LLM response generated successfully
+2025-07-28 23:00:48,843 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 23:02:19,838 - DEBUG - question created successfully.!!
+2025-07-28 23:02:19,838 - DEBUG - Starting RAG agent...
+2025-07-28 23:02:19,838 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmp9nidcnyh.pdf
+2025-07-28 23:02:24,840 - DEBUG - Data loaded successfully
+2025-07-28 23:02:24,841 - DEBUG - Splitting text into chunks...
+2025-07-28 23:02:24,844 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 23:02:24,845 - DEBUG - Text split into 388 chunks
+2025-07-28 23:02:24,845 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 23:06:48,389 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 23:06:48,392 - DEBUG - Loading from Pinecone...
+2025-07-28 23:06:49,474 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 23:06:49,474 - DEBUG - Performing semantic search...
+2025-07-28 23:06:52,476 - DEBUG - Search completed. Content length: 2679
+2025-07-28 23:06:52,477 - DEBUG - Creating prompt template...
+2025-07-28 23:06:52,477 - DEBUG - Creating prompt and chain...
+2025-07-28 23:06:52,478 - DEBUG - Invoking LLM chain...
+2025-07-28 23:06:53,907 - DEBUG - LLM response generated successfully
+2025-07-28 23:06:53,908 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
+2025-07-28 23:08:48,155 - DEBUG - question created successfully.!!
+2025-07-28 23:08:48,155 - DEBUG - Starting RAG agent...
+2025-07-28 23:08:48,155 - DEBUG - Loading data from: C:\Users\sahai\AppData\Local\Temp\tmpne1fb6e5.pdf
+2025-07-28 23:08:50,110 - DEBUG - Data loaded successfully
+2025-07-28 23:08:50,111 - DEBUG - Splitting text into chunks...
+2025-07-28 23:08:50,114 - DEBUG - Text splitted successfully with line numbers!
+2025-07-28 23:08:50,114 - DEBUG - Text split into 160 chunks
+2025-07-28 23:08:50,114 - DEBUG - Storing chunks to Pinecone...
+2025-07-28 23:11:06,188 - DEBUG - Store result: {'status': 'stored_in_pinecone', 'index_name': 'lightweight_index'}
+2025-07-28 23:11:06,188 - DEBUG - Loading from Pinecone...
+2025-07-28 23:11:07,924 - DEBUG - Successfully loaded from Pinecone
+2025-07-28 23:11:07,924 - DEBUG - Performing semantic search...
+2025-07-28 23:11:10,740 - DEBUG - Search completed. Content length: 2679
+2025-07-28 23:11:10,740 - DEBUG - Creating prompt template...
+2025-07-28 23:11:10,741 - DEBUG - Creating prompt and chain...
+2025-07-28 23:11:10,742 - DEBUG - Invoking LLM chain...
+2025-07-28 23:11:12,652 - DEBUG - LLM response generated successfully
+2025-07-28 23:11:12,652 - DEBUG - RAG ANSWER GENERATED SUCCESSFULLY!!
