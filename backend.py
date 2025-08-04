@@ -1,18 +1,21 @@
-from fastapi import FastAPI, File, UploadFile, Form, HTTPException, Header
+from fastapi import FastAPI, File, UploadFile, Form, HTTPException, Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
 import tempfile
 from pathlib import Path
-from dotenv import load_dotenv
-from pydantic_models import state
-from lang import build_graph
+from typing import List
+import logging
 
-load_dotenv()
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-app = FastAPI()
+app = FastAPI(title="Document Summarizer API", version="1.0.0")
 
-VALID_TOKEN = os.getenv("HACKRX_API_TOKEN", "fallback-token")
+VALID_TOKEN = "ff30391fef089ed361c4fd740566e8787e0b74f81be7deba92aedfb92a4a7af9"
 
 app.add_middleware(
     CORSMiddleware,
@@ -30,51 +33,99 @@ def root():
 def health_check():
     return {"status": "healthy"}
 
-def process_request(input_text: str, file: UploadFile):
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
-        content = file.file.read()
-        temp_file.write(content)
-        temp_file.flush()
-        temp_path = Path(temp_file.name)
+def process_request(input_text: List[str], file: UploadFile):
+    try:
+        # Check if the modules exist before importing
+        try:
+            from pydantic_models import state
+            from lang import build_graph
+        except ImportError as e:
+            logger.error(f"Import error: {e}")
+            raise HTTPException(status_code=500, detail=f"Module import failed: {str(e)}")
+        
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
+            content = file.file.read()
+            temp_file.write(content)
+            temp_file.flush()
+            temp_path = Path(temp_file.name)
 
-        request_state = state(input=input_text, file_path=temp_path)
-        graph = build_graph()
-        response = graph.invoke(request_state)
-        decision_obj = response["rag_ans"]
+            try:
+                request_state = state(input=input_text, file_path=temp_path)
+                graph = build_graph()
+                response = graph.invoke(request_state)
+                rag_answers = response["rag_ans"]  
+                return rag_answers
+            except Exception as e:
+                logger.error(f"Processing error: {e}")
+                raise HTTPException(status_code=500, detail=f"Processing failed: {str(e)}")
+            finally:
+                # Clean up temporary file
+                try:
+                    os.unlink(temp_path)
+                except:
+                    pass
+                    
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
-        return {
-            "Final Decision": decision_obj.decision,
-            "Approved Amount": f"${decision_obj.approved_amount}" if isinstance(decision_obj.approved_amount, int) else decision_obj.approved_amount,
-            "Justification": [
-                {"Clause": j.clause, "Reason": j.reason} for j in decision_obj.justification
-            ]
-        }
+def parse_input(input_text: str) -> List[str]:
+    if input_text.strip().startswith('[') and input_text.strip().endswith(']'):
+        try:
+            import ast
+            return ast.literal_eval(input_text)
+        except Exception as e:
+            logger.warning(f"Failed to parse as list: {e}")
+            pass
+    return [item.strip() for item in input_text.split(',')]
 
 @app.post("/summarize")
 async def summarizer(input_text: str = Form(...), file: UploadFile = File(...)):
     try:
-        result = process_request(input_text, file)
+        # Validate file type
+        if not file.filename.lower().endswith('.pdf'):
+            raise HTTPException(status_code=400, detail="Only PDF files are supported")
+        
+        parsed_input = parse_input(input_text)
+        result = process_request(parsed_input, file)
         return {"result": result}
+    except HTTPException:
+        raise
     except Exception as e:
+        logger.error(f"Summarizer error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/hackrx/run")
+security = HTTPBearer()
+
+async def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    if not credentials or credentials.scheme != "Bearer" or credentials.credentials != VALID_TOKEN:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid or missing authentication token",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    return credentials
+
+@app.post("/hackrx/run", dependencies=[Depends(verify_token)])
 async def hackrx_run(
     input_text: str = Form(...),
-    file: UploadFile = File(...),
-    authorization: str = Header(None)
+    file: UploadFile = File(...)
 ):
-    if not authorization or not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Missing token")
-    if authorization.replace("Bearer ", "") != VALID_TOKEN:
-        raise HTTPException(status_code=401, detail="Invalid token")
-
     try:
-        result = process_request(input_text, file)
+        # Validate file type
+        if not file.filename.lower().endswith('.pdf'):
+            raise HTTPException(status_code=400, detail="Only PDF files are supported")
+            
+        parsed_input = parse_input(input_text)
+        result = process_request(parsed_input, file)
         return {"result": result}
+    except HTTPException:
+        raise
     except Exception as e:
+        logger.error(f"HackRX run error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("backend:app", host="0.0.0.0", port=port, reload=False)
+    logger.info(f"Starting server on port {port}")
+    uvicorn.run(app, host="0.0.0.0", port=port, reload=False)

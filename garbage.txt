@@ -1,0 +1,89 @@
+# from langchain.output_parsers import PydanticOutputParser
+# from pydantic_models import state, query
+# from langchain.prompts import PromptTemplate
+# from llm import model
+# from logs.logging_config import logger
+
+# def query_generator(st: state):
+#     try:
+#         parser = PydanticOutputParser(pydantic_object=query)
+
+#         template = """
+# You are an intelligent assistant that extracts structured information from user queries related to insurance claims.
+
+# Extract the following fields from the user's input:
+# - Age of the person
+# - Medical procedure (or query related to the claim)
+# - Location of the claimant
+# - Duration or validity of the insurance policy
+
+# {format_instructions}
+
+# User input: "{user_input}"
+# """.strip()
+        
+#         user_inputs = st.input
+#         all_parsed_questions = []
+
+#         prompt_template = PromptTemplate(
+#             template=template,
+#             input_variables=["user_input"],
+#             partial_variables={"format_instructions": parser.get_format_instructions()}
+#         )
+
+#         for input_text in user_inputs:
+#             formatted_prompt = prompt_template.format(user_input=input_text)
+#             response = model.invoke(formatted_prompt)
+#             parsed_question = parser.parse(response.content)
+#             all_parsed_questions.append(parsed_question)
+
+#         st.questions = all_parsed_questions  
+#         logger.debug("All questions parsed successfully!")
+#         return st
+
+#     except Exception as e:
+#         logger.error(f"Failed to generate question(s): {e}")
+#         return st
+
+
+
+
+
+
+
+
+
+# from sklearn.feature_extraction.text import TfidfVectorizer
+# from sklearn.metrics.pairwise import cosine_similarity
+# from langchain.schema import Document
+# from RAG.splitting import split_text
+# from RAG.load_text import load_data
+# from pydantic_models import state
+# import numpy as np
+# import re
+
+# def process_text(doc: Document) -> str:
+#     text = doc.page_content.lower()
+#     return re.sub(r'[^\w\s]', '', text)
+
+# def TFIDF_search_single(st: state):
+#     try:
+#         text = load_data(st.file_path)
+#         documents = split_text(text)
+#         preprocess_docs = [process_text(doc) for doc in documents]
+#         vector = TfidfVectorizer()
+#         x = vector.fit_transform(preprocess_docs)
+#         query_text=[]
+#         results=[]
+#         for i in range(len(st.questions)):
+#             query_text.append(st.questions[i].procedure)
+#         for i in range(len(st.questions)):
+#             query_doc = Document(page_content=query_text[i])
+#             query_embedding = vector.transform([process_text(query_doc)])
+#             similarities = cosine_similarity(x, query_embedding)
+#             ranked_indices = np.argsort(similarities[:, 0])[::-1]
+#             top_docs = [documents[i] for i in ranked_indices[:6]]  #returns list of list (6 documents per question)
+#             results.append(top_docs)
+#         return results
+#     except Exception as e:
+#         return []
