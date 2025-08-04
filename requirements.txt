@@ -10,8 +10,5 @@ python-multipart
 pypdf
 langchain-core>=0.1.0
 google-generativeai
-pinecone
-langchain_experimental
-sklearn
+chromadb
 numpy
-flashrank
