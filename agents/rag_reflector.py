@@ -17,7 +17,7 @@ def rag_agent(st: state) -> state:
 
     prompt = PromptTemplate(
         template = """
-You are an expert Insurance Policy Analyst. Your task is to extract precise, factual answers from policy documents.
+You are an expert PDF Analyst. Your task is to extract precise, factual answers from policy documents.
 
 **POLICY DOCUMENT:**
 {context}
@@ -26,7 +26,7 @@ You are an expert Insurance Policy Analyst. Your task is to extract precise, fac
 {question}
 
 **ANSWERING GUIDELINES:**
-- Answer strictly based on the information in the policy document.
+- Answer strictly based on the information in the document.
 - Include specific clause references or section numbers if mentioned.
 - Quote exact phrases when helpful to improve clarity.
 - Avoid assumptions or generalizations not supported by the document.
