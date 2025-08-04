@@ -39,7 +39,6 @@ Return as a list where each item corresponds to each numbered query above.
 
         try:
             parsed_questions = []
-            response_lines = response.content.strip().split('\n')
             for i, inp in enumerate(st.input):
                 parsed_questions.append(query(
                     age=None,

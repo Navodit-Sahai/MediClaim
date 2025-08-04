@@ -82,7 +82,7 @@ class LightweightVectorStore:
             for i in range(len(results['documents'][0]))
         ]
 
-    def hybrid_search(self, query: str, k: int = 5, alpha: float = 0.7):
+    def hybrid_search(self, query: str, k: int = 5, alpha: float = 0.76):
         vector_results = self.similarity_search(query, k=11)
 
         def keyword_overlap_score(query, doc_text):

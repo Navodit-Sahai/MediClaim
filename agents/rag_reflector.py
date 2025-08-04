@@ -1,26 +1,23 @@
 from RAG.database import store_to_chroma, load_from_chroma
-from langchain.prompts import PromptTemplate
 from RAG.splitting import split_text
 from RAG.load_text import load_data
 from pydantic_models import state, query
+from langchain.prompts import PromptTemplate
 from llm import model
-import time
-
 from concurrent.futures import ThreadPoolExecutor
 
 def rag_agent(st: state) -> state:
-    text = load_data(st.file_path)
-    docs = split_text(text)
-    docs = [doc for doc in docs if doc and isinstance(doc.page_content, str) and doc.page_content.strip()]
-
+    docs = [doc for doc in split_text(load_data(st.file_path))
+            if getattr(doc, "page_content", "").strip()]
+    
     store_to_chroma(docs, index_name="lightweight_index")
     vectorstore = load_from_chroma(index_name="lightweight_index")
 
-    questions = st.questions if st.questions else [query(procedure=q) for q in (st.input or [])]
+    questions = st.questions or [query(procedure=q) for q in (st.input or [])]
 
     prompt = PromptTemplate(
-        template="""
-You are a Policy Document Analyst specializing in insurance policy interpretation.
+        template = """
+You are an expert Insurance Policy Analyst. Your task is to extract precise, factual answers from policy documents.
 
 **POLICY DOCUMENT:**
 {context}
@@ -28,12 +25,15 @@ You are a Policy Document Analyst specializing in insurance policy interpretatio
 **QUESTION:**
 {question}
 
-**INSTRUCTIONS:**
-- Try to give a complete and summarized answer.
-- Answer based strictly on the policy document.
-- Quote exact policy terms if applicable.
-- Your response should be factual and 15–30 words long.
-**Answer:**""",
+**ANSWERING GUIDELINES:**
+- Answer strictly based on the information in the policy document.
+- Include specific clause references or section numbers if mentioned.
+- Quote exact phrases when helpful to improve clarity.
+- Avoid assumptions or generalizations not supported by the document.
+- Summarize in 20–30 words, ensuring the response is clear, concise, and complete.
+
+**ANSWER:**
+""",
         input_variables=["context", "question"]
     )
 
@@ -41,25 +41,18 @@ You are a Policy Document Analyst specializing in insurance policy interpretatio
 
     def process(q):
         try:
-            query_text = q.procedure.strip() if q and q.procedure else ""
-            if not query_text:
-                return "Empty question provided."
+            q_text = (q.procedure or "").strip()
+            if not q_text:
+                return "Empty question."
 
-            results = vectorstore.hybrid_search(query_text, k=4)
-            context = "\n\n".join([doc.page_content for doc in results])
-
-            response = chain.invoke({
-                "context": context,
-                "question": query_text
-            })
-
-            answer = response.content.strip()
-            time.sleep(1)
-            return answer if answer else "No answer generated."
+            results = vectorstore.hybrid_search(q_text, k=4)
+            context = "\n\n".join(doc.page_content for doc in results if doc.page_content.strip())
+            res = chain.invoke({"context": context, "question": q_text})
+            return res.content.strip() or "No answer generated."
         except Exception as e:
             return f"Error: {str(e)[:30]}"
 
-    with ThreadPoolExecutor(max_workers=min(8, len(questions))) as executor:
-        st.rag_ans = list(executor.map(process, questions))
+    with ThreadPoolExecutor(max_workers=min(8, len(questions))) as pool:
+        st.rag_ans = list(pool.map(process, questions))
 
     return st
