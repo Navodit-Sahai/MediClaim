@@ -1,5 +1,4 @@
 import logging
-import logging.handlers
 import os
 
 log_dir = "logs"

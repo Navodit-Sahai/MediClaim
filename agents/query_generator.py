@@ -10,22 +10,29 @@ def query_generator(st: state):
         parser = PydanticOutputParser(pydantic_object=query)
 
         template = """
-You are an intelligent assistant that extracts structured information from multiple user queries related to insurance claims.
+You are an expert at extracting key information from user queries about insurance claims.
 
-Extract the following fields from EACH user input:
-- Age of the person  
-- Medical procedure (or query related to the claim)
-- Location of the claimant
-- Duration or validity of the insurance policy
+For each user input, extract the CORE QUESTION/PROCEDURE by:
+- Removing filler words (what, how, can, please, etc.)
+- Identifying the main medical procedure, claim type, or specific question
+- Keeping only the essential information needed for search
 
-Process all queries below and return a list of extracted information:
+Examples:
+Input: "What is the coverage for knee replacement surgery?"
+Core: "knee replacement surgery coverage"
+
+Input: "How to claim for diabetic medication expenses?"
+Core: "diabetic medication claim process"
+
+Input: "Can you help me understand cardiac surgery benefits?"
+Core: "cardiac surgery benefits"
 
 {format_instructions}
 
-Multiple User inputs:
+User inputs:
 {user_input}
 
-Return as a list where each item corresponds to each numbered query above.
+Extract core procedure/question for each input above.
 """.strip()
 
         prompt_template = PromptTemplate(
@@ -36,19 +43,12 @@ Return as a list where each item corresponds to each numbered query above.
 
         formatted_prompt = prompt_template.format(user_input=combined_input)
         response = model.invoke(formatted_prompt)
-
+        
         try:
-            parsed_questions = []
-            for i, inp in enumerate(st.input):
-                parsed_questions.append(query(
-                    age=None,
-                    procedure=inp,
-                    location=None,
-                    duration=None
-                ))
-            st.questions = parsed_questions
+            parsed_response = parser.parse(response.content)
+            st.questions = parsed_response if isinstance(parsed_response, list) else [parsed_response]
         except:
-            st.questions = [query(procedure=inp) for inp in st.input]
+            st.questions = [query(procedure=inp.strip()) for inp in st.input]
 
         logger.debug("All questions parsed successfully!")
         return st

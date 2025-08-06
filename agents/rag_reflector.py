@@ -1,25 +1,38 @@
-from RAG.database import store_to_chroma, load_from_chroma
-from RAG.splitting import split_text
-from RAG.load_text import load_data
-from pydantic_models import state, query
+from RAG.database import vector_Search
+from pydantic_models import state
 from langchain.prompts import PromptTemplate
 from llm import model
 from concurrent.futures import ThreadPoolExecutor
+from logs.logging_config import logger
+
+def format_and_call_model(args):
+    context, question, prompt, index = args
+    try:
+        logger.debug(f"[{index+1}] Processing question: {question}")
+        final_prompt = prompt.format(context=context, question=question)
+        ans = model.invoke(final_prompt)
+        logger.debug(f"[{index+1}] Answer received successfully.")
+        return ans.content
+    except Exception as e:
+        logger.error(f"[{index+1}] Error processing question: {str(e)}")
+        return f"Error: {str(e)}"
 
 def rag_agent(st: state) -> state:
-    docs = [doc for doc in split_text(load_data(st.file_path))
-            if getattr(doc, "page_content", "").strip()]
-    
-    store_to_chroma(docs, index_name="lightweight_index")
-    vectorstore = load_from_chroma(index_name="lightweight_index")
+    logger.info("Starting RAG agent pipeline.")
+    response = vector_Search(st)
+    logger.info("Vector search completed.")
 
-    questions = st.questions or [query(procedure=q) for q in (st.input or [])]
+    questions = [
+        st.questions[i].procedure if st.questions[i].procedure else st.input[i]
+        for i in range(len(st.input))
+    ]
+    logger.info(f"Total questions to process: {len(questions)}")
 
     prompt = PromptTemplate(
-        template = """
-You are an expert PDF Analyst. Your task is to extract precise, factual answers from policy documents.
+        template="""
+You are an expert Document Analyst. Your task is to extract precise, factual answers from policy documents and summarize it.
 
-**POLICY DOCUMENT:**
+**CONTEXT:**
 {context}
 
 **QUESTION:**
@@ -27,7 +40,7 @@ You are an expert PDF Analyst. Your task is to extract precise, factual answers 
 
 **ANSWERING GUIDELINES:**
 - Answer strictly based on the information in the document.
-- Include specific clause references or section numbers if mentioned.
+- Include specific clause references.
 - Quote exact phrases when helpful to improve clarity.
 - Avoid assumptions or generalizations not supported by the document.
 - Summarize in 20–30 words, ensuring the response is clear, concise, and complete.
@@ -37,22 +50,10 @@ You are an expert PDF Analyst. Your task is to extract precise, factual answers 
         input_variables=["context", "question"]
     )
 
-    chain = prompt | model
+    args_list = [(response[i], questions[i], prompt, i) for i in range(len(questions))]
 
-    def process(q):
-        try:
-            q_text = (q.procedure or "").strip()
-            if not q_text:
-                return "Empty question."
+    with ThreadPoolExecutor(max_workers=min(10, len(args_list))) as executor:
+        st.rag_ans = list(executor.map(format_and_call_model, args_list))
 
-            results = vectorstore.hybrid_search(q_text, k=4)
-            context = "\n\n".join(doc.page_content for doc in results if doc.page_content.strip())
-            res = chain.invoke({"context": context, "question": q_text})
-            return res.content.strip() or "No answer generated."
-        except Exception as e:
-            return f"Error: {str(e)[:30]}"
-
-    with ThreadPoolExecutor(max_workers=min(8, len(questions))) as pool:
-        st.rag_ans = list(pool.map(process, questions))
-
+    logger.info("RAG agent pipeline completed.")
     return st

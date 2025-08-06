@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph
-from agents.rag_reflector import rag_agent
+from RAG.database import vector_Search
 from agents.query_generator import query_generator
 from pydantic_models import state
 from pathlib import Path
@@ -10,10 +10,10 @@ load_dotenv()
 def build_graph():
     graph = StateGraph(state)
     graph.add_node("query_generator", query_generator)
-    graph.add_node("rag_agent", rag_agent)
+    graph.add_node("vector_search", vector_Search)
     graph.set_entry_point("query_generator")
-    graph.add_edge("query_generator", "rag_agent")
-    graph.set_finish_point("rag_agent")
+    graph.add_edge("query_generator", "vector_search")
+    graph.set_finish_point("vector_search")
     return graph.compile()
 
 def process_questions(questions, file_path: str):
