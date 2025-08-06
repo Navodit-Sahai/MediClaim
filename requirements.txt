@@ -12,5 +12,6 @@ langchain-core>=0.1.0
 google-generativeai
 chromadb
 numpy
+scikit-learn
 rank_bm25
 pdfplumber
