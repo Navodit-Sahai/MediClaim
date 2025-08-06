@@ -12,6 +12,5 @@ langchain-core>=0.1.0
 google-generativeai
 chromadb
 numpy
-bm25_rank
+rank_bm25
 pdfplumber
-unstructured
